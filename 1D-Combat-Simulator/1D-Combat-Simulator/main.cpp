@@ -27,6 +27,9 @@ int main() {
 	// This variable will be our error sign
 	string error = "ERROR: ";
 
+	// This variable wil be used when displaying a message
+	string message = "";
+
 	// These variables will be used if characters names are too
 	// short or too long
 	string nameErrorMessage = "Names must be between 1 and 10 characters long. ";
@@ -47,34 +50,38 @@ int main() {
 	int populationAlive = 5000;
 	int populationDead = 0;
 
+	// These variables will be used during battles to hold total health points
+	int heroHealth = 0;
+	int monsterHealth = 0;
+
 	// Variables for Hero 00
 	string heroName00 = "Jelly Fish";
-	int heroHealth00 = 50;
-	int heroAttack00 = 10;
+	int heroHealth00 = 0;
+	int heroAttack00 = 0;
 	bool heroActive00 = false;
 
 	// Variables for Hero 01
 	string heroName01 = "Hero 02";
-	int heroHealth01 = 50;
-	int heroAttack01 = 10;
+	int heroHealth01 = 0;
+	int heroAttack01 = 0;
 	bool heroActive01 = false;
 
 	// Variables for Hero 02
 	string heroName02 = "Hero 03";
-	int heroHealth02 = 50;
-	int heroAttack02 = 10;
+	int heroHealth02 = 0;
+	int heroAttack02 = 0;
 	bool heroActive02 = false;
 
 	// Variables for Hero 03
 	string heroName03 = "Hero 04";
-	int heroHealth03 = 50;
-	int heroAttack03 = 10;
+	int heroHealth03 = 0;
+	int heroAttack03 = 0;
 	bool heroActive03 = false;
 
 	// Variables for Hero 04
 	string heroName04 = "Hero 05";
-	int heroHealth04 = 50;
-	int heroAttack04 = 10;
+	int heroHealth04 = 0;
+	int heroAttack04 = 0;
 	bool heroActive04 = false;
 
 	// Variables for Region 1
@@ -82,85 +89,157 @@ int main() {
 	bool r1locked = false;
 
 	// Base 1
-	int r1b1Units = 1;
+	int r1b1Units = 0;
 	bool r1b1Active = true;
 	bool r1b1Defeated = false;
-	string r1b1Name00 = "Wilhelmine";
+	string r1b1Name00 = "Monster 1";
 	int r1b1Health00 = 50;
 	int r1b1Attack00 = 10;
 	bool r1b1Active00 = true;
+	string r1b1Name01 = "Monster 2";
+	int r1b1Health01 = 50;
+	int r1b1Attack01 = 10;
+	bool r1b1Active01 = true;
+	string r1b1Name02 = "Monster 3";
+	int r1b1Health02 = 50;
+	int r1b1Attack02 = 10;
+	bool r1b1Active02 = true;
+	string r1b1Name03 = "Monster 4";
+	int r1b1Health03 = 50;
+	int r1b1Attack03 = 10;
+	bool r1b1Active03 = true;
+	string r1b1Name04 = "Monster 5";
+	int r1b1Health04 = 50;
+	int r1b1Attack04 = 10;
+	bool r1b1Active04 = true;
 
 	// Base 2
-	int r1b2Units = 1;
+	int r1b2Units = 0;
 	bool r1b2Active = false;
 	bool r1b2Defeated = false;
-	string r1b2Name00 = "Stansilaus";
-	int r1b2Health00 = 100;
-	int r1b2Attack00 = 20;
+	string r1b2Name00 = "";
+	int r1b2Health00 = 50;
+	int r1b2Attack00 = 10;
 	bool r1b2Active00 = true;
+	string r1b2Name01 = "";
+	int r1b2Health01 = 50;
+	int r1b2Attack01 = 10;
+	bool r1b2Active01 = true;
+	string r1b2Name02 = "";
+	int r1b2Health02 = 50;
+	int r1b2Attack02 = 10;
+	bool r1b2Active02 = true;
+	string r1b2Name03 = "";
+	int r1b2Health03 = 50;
+	int r1b2Attack03 = 10;
+	bool r1b2Active03 = true;
+	string r1b2Name04 = "";
+	int r1b2Health04 = 50;
+	int r1b2Attack04 = 10;
+	bool r1b2Active04 = true;
 
 	// Base 3
-	int r1b3Units = 2;
+	int r1b3Units = 0;
 	bool r1b3Active = false;
 	bool r1b3Defeated = false;
-	string r1b3Name00 = "Sanjuanita";
+	string r1b3Name00 = "";
 	int r1b3Health00 = 50;
 	int r1b3Attack00 = 10;
 	bool r1b3Active00 = true;
-	string r1b3Name01 = "Montserrat";
+	string r1b3Name01 = "";
 	int r1b3Health01 = 50;
 	int r1b3Attack01 = 10;
 	bool r1b3Active01 = true;
+	string r1b3Name02 = "";
+	int r1b3Health02 = 50;
+	int r1b3Attack02 = 10;
+	bool r1b3Active02 = true;
+	string r1b3Name03 = "";
+	int r1b3Health03 = 50;
+	int r1b3Attack03 = 10;
+	bool r1b3Active03 = true;
+	string r1b3Name04 = "";
+	int r1b3Health04 = 50;
+	int r1b3Attack04 = 10;
+	bool r1b3Active04 = true;
 
 	// Base 4
-	int r1b4Units = 2;
+	int r1b4Units = 0;
 	bool r1b4Active = false;
 	bool r1b4Defeated = false;
 	string r1b4Name00 = "";
-	int r1b4Health00 = 100;
-	int r1b4Attack00 = 20;
+	int r1b4Health00 = 50;
+	int r1b4Attack00 = 10;
 	bool r1b4Active00 = true;
 	string r1b4Name01 = "";
-	int r1b4Health01 = 100;
-	int r1b4Attack01 = 20;
+	int r1b4Health01 = 50;
+	int r1b4Attack01 = 10;
 	bool r1b4Active01 = true;
+	string r1b4Name02 = "";
+	int r1b4Health02 = 50;
+	int r1b4Attack02 = 10;
+	bool r1b4Active02 = true;
+	string r1b4Name03 = "";
+	int r1b4Health03 = 50;
+	int r1b4Attack03 = 10;
+	bool r1b4Active03 = true;
+	string r1b4Name04 = "";
+	int r1b4Health04 = 50;
+	int r1b4Attack04 = 10;
+	bool r1b4Active04 = true;
 
 	// Base 5
-	int r1b5Units = 3;
+	int r1b5Units = 0;
 	bool r1b5Active = false;
 	bool r1b5Defeated = false;
 	string r1b5Name00 = "";
 	int r1b5Health00 = 50;
-	int r1b5Attack00 = 20;
+	int r1b5Attack00 = 10;
 	bool r1b5Active00 = true;
 	string r1b5Name01 = "";
 	int r1b5Health01 = 50;
-	int r1b5Attack01 = 20;
+	int r1b5Attack01 = 10;
 	bool r1b5Active01 = true;
 	string r1b5Name02 = "";
 	int r1b5Health02 = 50;
-	int r1b5Attack02 = 20;
+	int r1b5Attack02 = 10;
 	bool r1b5Active02 = true;
+	string r1b5Name03 = "";
+	int r1b5Health03 = 50;
+	int r1b5Attack03 = 10;
+	bool r1b5Active03 = true;
+	string r1b5Name04 = "";
+	int r1b5Health04 = 50;
+	int r1b5Attack04 = 10;
+	bool r1b5Active04 = true;
 
 	// Base 6
-	int r1b6Units = 3;
+	int r1b6Units = 0;
 	bool r1b6Active = false;
 	bool r1b6Defeated = false;
 	string r1b6Name00 = "";
 	int r1b6Health00 = 50;
-	int r1b6Attack00 = 20;
+	int r1b6Attack00 = 10;
 	bool r1b6Active00 = true;
 	string r1b6Name01 = "";
-	int r1b6Health01 = 200;
+	int r1b6Health01 = 50;
 	int r1b6Attack01 = 10;
 	bool r1b6Active01 = true;
 	string r1b6Name02 = "";
 	int r1b6Health02 = 50;
-	int r1b6Attack02 = 20;
+	int r1b6Attack02 = 10;
 	bool r1b6Active02 = true;
+	string r1b6Name03 = "";
+	int r1b6Health03 = 50;
+	int r1b6Attack03 = 10;
+	bool r1b6Active03 = true;
+	string r1b6Name04 = "";
+	int r1b6Health04 = 50;
+	int r1b6Attack04 = 10;
+	bool r1b6Active04 = true;
 
 	// Base 7
-	int r1b7Units = 5;
+	int r1b7Units = 0;
 	bool r1b7Active = false;
 	bool r1b7Defeated = false;
 	string r1b7Name00 = "";
@@ -185,45 +264,53 @@ int main() {
 	bool r1b7Active04 = true;
 
 	// Base 8
-	int r1b8Units = 3;
+	int r1b8Units = 0;
 	bool r1b8Active = false;
 	bool r1b8Defeated = false;
 	string r1b8Name00 = "";
-	int r1b8Health00 = 150;
-	int r1b8Attack00 = 20;
+	int r1b8Health00 = 50;
+	int r1b8Attack00 = 10;
 	bool r1b8Active00 = true;
 	string r1b8Name01 = "";
-	int r1b8Health01 = 150;
-	int r1b8Attack01 = 20;
+	int r1b8Health01 = 50;
+	int r1b8Attack01 = 10;
 	bool r1b8Active01 = true;
 	string r1b8Name02 = "";
-	int r1b8Health02 = 150;
-	int r1b8Attack02 = 20;
+	int r1b8Health02 = 50;
+	int r1b8Attack02 = 10;
 	bool r1b8Active02 = true;
+	string r1b8Name03 = "";
+	int r1b8Health03 = 50;
+	int r1b8Attack03 = 10;
+	bool r1b8Active03 = true;
+	string r1b8Name04 = "";
+	int r1b8Health04 = 50;
+	int r1b8Attack04 = 10;
+	bool r1b8Active04 = true;
 
 	// Base 9 - Boss
-	int r1b9Units = 5;
+	int r1b9Units = 0;
 	bool r1b9Active = false;
 	bool r1b9Defeated = false;
-	string r1b9Name00 = "Little Boss";
-	int r1b9Health00 = 200;
-	int r1b9Attack00 = 40;
+	string r1b9Name00 = "";
+	int r1b9Health00 = 50;
+	int r1b9Attack00 = 10;
 	bool r1b9Active00 = true;
 	string r1b9Name01 = "";
-	int r1b9Health01 = 100;
-	int r1b9Attack01 = 20;
+	int r1b9Health01 = 50;
+	int r1b9Attack01 = 10;
 	bool r1b9Active01 = true;
 	string r1b9Name02 = "";
-	int r1b9Health02 = 100;
-	int r1b9Attack02 = 20;
+	int r1b9Health02 = 50;
+	int r1b9Attack02 = 10;
 	bool r1b9Active02 = true;
 	string r1b9Name03 = "";
-	int r1b9Health03 = 100;
-	int r1b9Attack03 = 20;
+	int r1b9Health03 = 50;
+	int r1b9Attack03 = 10;
 	bool r1b9Active03 = true;
 	string r1b9Name04 = "";
-	int r1b9Health04 = 100;
-	int r1b9Attack04 = 20;
+	int r1b9Health04 = 50;
+	int r1b9Attack04 = 10;
 	bool r1b9Active04 = true;
 
 
@@ -284,6 +371,8 @@ int main() {
 			}
 
 			heroName00 = menuString;
+			heroHealth00 = 50;
+			heroAttack00 = 10;
 			heroActive00 = true;
 			numHeroes = 1;
 			newGame = false;
@@ -1116,109 +1205,529 @@ int main() {
 
 									cout << spacer;
 
+									// Count the amount of monsters
+									if(r1b1Active00) r1b1Units++;
+									if(r1b1Active01) r1b1Units++;
+									if(r1b1Active02) r1b1Units++;
+									if(r1b1Active03) r1b1Units++;
+									if(r1b1Active04) r1b1Units++;
+
+									// Display monsters to player
+
 									for(int i = 0; i < r1b1Units; i++) {
-										cout << "||-- Monsters --||\n";
-										cout << "||--------------------------------------------------------------||\n";
 
-										cout << "||";
+										if(i == 0) {
+											cout << "||-- Monsters --||\n";
+											cout << "||--------------------------------------------------------------||\n";
 
-										if(r1b1Name00.length() == 1) {
-											cout << "----- " << r1b1Name00 << " ------";
-										} else if(r1b1Name00.length() == 2) {
-											cout << "----- " << r1b1Name00 << " -----";
-										} else if(r1b1Name00.length() == 3) {
-											cout << "---- " << r1b1Name00 << " -----";
-										} else if(r1b1Name00.length() == 4) {
-											cout << "---- " << r1b1Name00 << " ----";
-										} else if(r1b1Name00.length() == 5) {
-											cout << "--- " << r1b1Name00 << " ----";
-										} else if(r1b1Name00.length() == 6) {
-											cout << "--- " << r1b1Name00 << " ---";
-										} else if(r1b1Name00.length() == 7) {
-											cout << "-- " << r1b1Name00 << " ---";
-										} else if(r1b1Name00.length() == 8) {
-											cout << "-- " << r1b1Name00 << " --";
-										} else if(r1b1Name00.length() == 9) {
-											cout << "- " << r1b1Name00 << " --";
-										} else if(r1b1Name00.length() == 10) {
-											cout << "- " << r1b1Name00 << " -";
+											cout << "||";
+
+											if(r1b1Name00.length() == 1) {
+												cout << "----- " << r1b1Name00 << " ------";
+											} else if(r1b1Name00.length() == 2) {
+												cout << "----- " << r1b1Name00 << " -----";
+											} else if(r1b1Name00.length() == 3) {
+												cout << "---- " << r1b1Name00 << " -----";
+											} else if(r1b1Name00.length() == 4) {
+												cout << "---- " << r1b1Name00 << " ----";
+											} else if(r1b1Name00.length() == 5) {
+												cout << "--- " << r1b1Name00 << " ----";
+											} else if(r1b1Name00.length() == 6) {
+												cout << "--- " << r1b1Name00 << " ---";
+											} else if(r1b1Name00.length() == 7) {
+												cout << "-- " << r1b1Name00 << " ---";
+											} else if(r1b1Name00.length() == 8) {
+												cout << "-- " << r1b1Name00 << " --";
+											} else if(r1b1Name00.length() == 9) {
+												cout << "- " << r1b1Name00 << " --";
+											} else if(r1b1Name00.length() == 10) {
+												cout << "- " << r1b1Name00 << " -";
+											}
+
+											cout << "||- Health -||- ";
+
+											// Just some calculations
+											hashCount = r1b1Health00 / 50;
+											equalCount = 20 - hashCount;
+
+											// Create bar
+											for(int i = 0; i < hashCount; i++) {
+												cout << "#";
+											}
+											for(int i = 0; i < equalCount; i++) {
+												cout << "=";
+											}
+
+											cout << " -||- ";
+
+											if(r1b1Health00 < 100 && r1b1Health00 >= 10) {
+												cout << "00" << heroHealth00;
+											} else if(r1b1Health00 < 1000 && r1b1Health00 >= 100) {
+												cout << "0" << heroHealth00;
+											} else {
+												cout << r1b1Health00;
+											}
+
+											cout << " -||\n";
+
+											cout << "||";
+
+											if(r1b1Name00.length() == 1) {
+												cout << "----- " << r1b1Name00 << " ------";
+											} else if(r1b1Name00.length() == 2) {
+												cout << "----- " << r1b1Name00 << " -----";
+											} else if(r1b1Name00.length() == 3) {
+												cout << "---- " << r1b1Name00 << " -----";
+											} else if(r1b1Name00.length() == 4) {
+												cout << "---- " << r1b1Name00 << " ----";
+											} else if(r1b1Name00.length() == 5) {
+												cout << "--- " << r1b1Name00 << " ----";
+											} else if(r1b1Name00.length() == 6) {
+												cout << "--- " << r1b1Name00 << " ---";
+											} else if(r1b1Name00.length() == 7) {
+												cout << "-- " << r1b1Name00 << " ---";
+											} else if(r1b1Name00.length() == 8) {
+												cout << "-- " << r1b1Name00 << " --";
+											} else if(r1b1Name00.length() == 9) {
+												cout << "- " << r1b1Name00 << " --";
+											} else if(r1b1Name00.length() == 10) {
+												cout << "- " << r1b1Name00 << " -";
+											}
+
+											cout << "||- Attack -||- ";
+
+											// Just some calculations
+											hashCount = r1b1Attack00 / 10;
+											equalCount = 20 - hashCount;
+
+											// Create bar
+											for(int i = 0; i < hashCount; i++) {
+												cout << "#";
+											}
+											for(int i = 0; i < equalCount; i++) {
+												cout << "=";
+											}
+
+											cout << " -||- ";
+
+											if(r1b1Attack00 < 100 && r1b1Attack00 >= 10) {
+												cout << "00" << r1b1Attack00;
+											} else if(r1b1Attack00 < 1000 && r1b1Attack00 >= 100) {
+												cout << "0" << r1b1Attack00;
+											} else {
+												cout << r1b1Attack00;
+											}
+
+											cout << " -||\n";
+
+											cout << "||--------------------------------------------------------------||\n";
+										} else if(i == 1) {
+											cout << "||";
+
+											if(r1b1Name01.length() == 1) {
+												cout << "----- " << r1b1Name01 << " ------";
+											} else if(r1b1Name01.length() == 2) {
+												cout << "----- " << r1b1Name01 << " -----";
+											} else if(r1b1Name01.length() == 3) {
+												cout << "---- " << r1b1Name01 << " -----";
+											} else if(r1b1Name01.length() == 4) {
+												cout << "---- " << r1b1Name01 << " ----";
+											} else if(r1b1Name01.length() == 5) {
+												cout << "--- " << r1b1Name01 << " ----";
+											} else if(r1b1Name01.length() == 6) {
+												cout << "--- " << r1b1Name01 << " ---";
+											} else if(r1b1Name01.length() == 7) {
+												cout << "-- " << r1b1Name01 << " ---";
+											} else if(r1b1Name01.length() == 8) {
+												cout << "-- " << r1b1Name01 << " --";
+											} else if(r1b1Name01.length() == 9) {
+												cout << "- " << r1b1Name01 << " --";
+											} else if(r1b1Name01.length() == 10) {
+												cout << "- " << r1b1Name01 << " -";
+											}
+
+											cout << "||- Health -||- ";
+
+											// Just some calculations
+											hashCount = r1b1Health01 / 50;
+											equalCount = 20 - hashCount;
+
+											// Create bar
+											for(int i = 0; i < hashCount; i++) {
+												cout << "#";
+											}
+											for(int i = 0; i < equalCount; i++) {
+												cout << "=";
+											}
+
+											cout << " -||- ";
+
+											if(r1b1Health01 < 100 && r1b1Health01 >= 10) {
+												cout << "00" << r1b1Health01;
+											} else if(r1b1Health01 < 1000 && r1b1Health01 >= 100) {
+												cout << "0" << r1b1Health01;
+											} else {
+												cout << r1b1Health01;
+											}
+
+											cout << " -||\n";
+
+											cout << "||";
+
+											if(r1b1Name01.length() == 1) {
+												cout << "----- " << r1b1Name01 << " ------";
+											} else if(r1b1Name01.length() == 2) {
+												cout << "----- " << r1b1Name01 << " -----";
+											} else if(r1b1Name01.length() == 3) {
+												cout << "---- " << r1b1Name01 << " -----";
+											} else if(r1b1Name01.length() == 4) {
+												cout << "---- " << r1b1Name01 << " ----";
+											} else if(r1b1Name01.length() == 5) {
+												cout << "--- " << r1b1Name01 << " ----";
+											} else if(r1b1Name01.length() == 6) {
+												cout << "--- " << r1b1Name01 << " ---";
+											} else if(r1b1Name01.length() == 7) {
+												cout << "-- " << r1b1Name01 << " ---";
+											} else if(r1b1Name01.length() == 8) {
+												cout << "-- " << r1b1Name01 << " --";
+											} else if(r1b1Name01.length() == 9) {
+												cout << "- " << r1b1Name01 << " --";
+											} else if(r1b1Name01.length() == 10) {
+												cout << "- " << r1b1Name01 << " -";
+											}
+
+											cout << "||- Attack -||- ";
+
+											// Just some calculations
+											hashCount = r1b1Attack01 / 10;
+											equalCount = 20 - hashCount;
+
+											// Create bar
+											for(int i = 0; i < hashCount; i++) {
+												cout << "#";
+											}
+											for(int i = 0; i < equalCount; i++) {
+												cout << "=";
+											}
+
+											cout << " -||- ";
+
+											if(r1b1Attack01 < 100 && r1b1Attack01 >= 10) {
+												cout << "00" << r1b1Attack01;
+											} else if(r1b1Attack01 < 1000 && r1b1Attack01 >= 100) {
+												cout << "0" << r1b1Attack01;
+											} else {
+												cout << r1b1Attack01;
+											}
+
+											cout << " -||\n";
+
+											cout << "||--------------------------------------------------------------||\n";
+										} else if(i == 2) {
+											cout << "||";
+
+											if(r1b1Name02.length() == 1) {
+												cout << "----- " << r1b1Name02 << " ------";
+											} else if(r1b1Name02.length() == 2) {
+												cout << "----- " << r1b1Name02 << " -----";
+											} else if(r1b1Name02.length() == 3) {
+												cout << "---- " << r1b1Name02 << " -----";
+											} else if(r1b1Name02.length() == 4) {
+												cout << "---- " << r1b1Name02 << " ----";
+											} else if(r1b1Name02.length() == 5) {
+												cout << "--- " << r1b1Name02 << " ----";
+											} else if(r1b1Name02.length() == 6) {
+												cout << "--- " << r1b1Name02 << " ---";
+											} else if(r1b1Name02.length() == 7) {
+												cout << "-- " << r1b1Name02 << " ---";
+											} else if(r1b1Name02.length() == 8) {
+												cout << "-- " << r1b1Name02 << " --";
+											} else if(r1b1Name02.length() == 9) {
+												cout << "- " << r1b1Name02 << " --";
+											} else if(r1b1Name02.length() == 10) {
+												cout << "- " << r1b1Name02 << " -";
+											}
+
+											cout << "||- Health -||- ";
+
+											// Just some calculations
+											hashCount = r1b1Health02 / 50;
+											equalCount = 20 - hashCount;
+
+											// Create bar
+											for(int i = 0; i < hashCount; i++) {
+												cout << "#";
+											}
+											for(int i = 0; i < equalCount; i++) {
+												cout << "=";
+											}
+
+											cout << " -||- ";
+
+											if(r1b1Health02 < 100 && r1b1Health02 >= 10) {
+												cout << "00" << r1b1Health02;
+											} else if(r1b1Health02 < 1000 && r1b1Health02 >= 100) {
+												cout << "0" << r1b1Health02;
+											} else {
+												cout << r1b1Health02;
+											}
+
+											cout << " -||\n";
+
+											cout << "||";
+
+											if(r1b1Name02.length() == 1) {
+												cout << "----- " << r1b1Name02 << " ------";
+											} else if(r1b1Name02.length() == 2) {
+												cout << "----- " << r1b1Name02 << " -----";
+											} else if(r1b1Name02.length() == 3) {
+												cout << "---- " << r1b1Name02 << " -----";
+											} else if(r1b1Name02.length() == 4) {
+												cout << "---- " << r1b1Name02 << " ----";
+											} else if(r1b1Name02.length() == 5) {
+												cout << "--- " << r1b1Name02 << " ----";
+											} else if(r1b1Name02.length() == 6) {
+												cout << "--- " << r1b1Name02 << " ---";
+											} else if(r1b1Name02.length() == 7) {
+												cout << "-- " << r1b1Name02 << " ---";
+											} else if(r1b1Name02.length() == 8) {
+												cout << "-- " << r1b1Name02 << " --";
+											} else if(r1b1Name02.length() == 9) {
+												cout << "- " << r1b1Name02 << " --";
+											} else if(r1b1Name02.length() == 10) {
+												cout << "- " << r1b1Name02 << " -";
+											}
+
+											cout << "||- Attack -||- ";
+
+											// Just some calculations
+											hashCount = r1b1Attack02 / 10;
+											equalCount = 20 - hashCount;
+
+											// Create bar
+											for(int i = 0; i < hashCount; i++) {
+												cout << "#";
+											}
+											for(int i = 0; i < equalCount; i++) {
+												cout << "=";
+											}
+
+											cout << " -||- ";
+
+											if(r1b1Attack02 < 100 && r1b1Attack02 >= 10) {
+												cout << "00" << r1b1Attack02;
+											} else if(r1b1Attack02 < 1000 && r1b1Attack02 >= 100) {
+												cout << "0" << r1b1Attack02;
+											} else {
+												cout << r1b1Attack02;
+											}
+
+											cout << " -||\n";
+
+											cout << "||--------------------------------------------------------------||\n";
+										} else if(i == 3) {
+											cout << "||";
+
+											if(r1b1Name03.length() == 1) {
+												cout << "----- " << r1b1Name03 << " ------";
+											} else if(r1b1Name03.length() == 2) {
+												cout << "----- " << r1b1Name03 << " -----";
+											} else if(r1b1Name03.length() == 3) {
+												cout << "---- " << r1b1Name03 << " -----";
+											} else if(r1b1Name03.length() == 4) {
+												cout << "---- " << r1b1Name03 << " ----";
+											} else if(r1b1Name03.length() == 5) {
+												cout << "--- " << r1b1Name03 << " ----";
+											} else if(r1b1Name03.length() == 6) {
+												cout << "--- " << r1b1Name03 << " ---";
+											} else if(r1b1Name03.length() == 7) {
+												cout << "-- " << r1b1Name03 << " ---";
+											} else if(r1b1Name03.length() == 8) {
+												cout << "-- " << r1b1Name03 << " --";
+											} else if(r1b1Name03.length() == 9) {
+												cout << "- " << r1b1Name03 << " --";
+											} else if(r1b1Name03.length() == 10) {
+												cout << "- " << r1b1Name03 << " -";
+											}
+
+											cout << "||- Health -||- ";
+
+											// Just some calculations
+											hashCount = r1b1Health03 / 50;
+											equalCount = 20 - hashCount;
+
+											// Create bar
+											for(int i = 0; i < hashCount; i++) {
+												cout << "#";
+											}
+											for(int i = 0; i < equalCount; i++) {
+												cout << "=";
+											}
+
+											cout << " -||- ";
+
+											if(r1b1Health03 < 100 && r1b1Health03 >= 10) {
+												cout << "00" << r1b1Health03;
+											} else if(r1b1Health03 < 1000 && r1b1Health03 >= 100) {
+												cout << "0" << r1b1Health03;
+											} else {
+												cout << r1b1Health03;
+											}
+
+											cout << " -||\n";
+
+											cout << "||";
+
+											if(r1b1Name03.length() == 1) {
+												cout << "----- " << r1b1Name03 << " ------";
+											} else if(r1b1Name03.length() == 2) {
+												cout << "----- " << r1b1Name03 << " -----";
+											} else if(r1b1Name03.length() == 3) {
+												cout << "---- " << r1b1Name03 << " -----";
+											} else if(r1b1Name03.length() == 4) {
+												cout << "---- " << r1b1Name03 << " ----";
+											} else if(r1b1Name03.length() == 5) {
+												cout << "--- " << r1b1Name03 << " ----";
+											} else if(r1b1Name03.length() == 6) {
+												cout << "--- " << r1b1Name03 << " ---";
+											} else if(r1b1Name03.length() == 7) {
+												cout << "-- " << r1b1Name03 << " ---";
+											} else if(r1b1Name03.length() == 8) {
+												cout << "-- " << r1b1Name03 << " --";
+											} else if(r1b1Name03.length() == 9) {
+												cout << "- " << r1b1Name03 << " --";
+											} else if(r1b1Name03.length() == 10) {
+												cout << "- " << r1b1Name03 << " -";
+											}
+
+											cout << "||- Attack -||- ";
+
+											// Just some calculations
+											hashCount = r1b1Attack03 / 10;
+											equalCount = 20 - hashCount;
+
+											// Create bar
+											for(int i = 0; i < hashCount; i++) {
+												cout << "#";
+											}
+											for(int i = 0; i < equalCount; i++) {
+												cout << "=";
+											}
+
+											cout << " -||- ";
+
+											if(r1b1Attack03 < 100 && r1b1Attack03 >= 10) {
+												cout << "00" << r1b1Attack03;
+											} else if(r1b1Attack03 < 1000 && r1b1Attack03 >= 100) {
+												cout << "0" << r1b1Attack03;
+											} else {
+												cout << r1b1Attack03;
+											}
+
+											cout << " -||\n";
+
+											cout << "||--------------------------------------------------------------||\n";
+										} else if(i == 4) {
+											cout << "||";
+
+											if(r1b1Name04.length() == 1) {
+												cout << "----- " << r1b1Name04 << " ------";
+											} else if(r1b1Name04.length() == 2) {
+												cout << "----- " << r1b1Name04 << " -----";
+											} else if(r1b1Name04.length() == 3) {
+												cout << "---- " << r1b1Name04 << " -----";
+											} else if(r1b1Name04.length() == 4) {
+												cout << "---- " << r1b1Name04 << " ----";
+											} else if(r1b1Name04.length() == 5) {
+												cout << "--- " << r1b1Name04 << " ----";
+											} else if(r1b1Name04.length() == 6) {
+												cout << "--- " << r1b1Name04 << " ---";
+											} else if(r1b1Name04.length() == 7) {
+												cout << "-- " << r1b1Name04 << " ---";
+											} else if(r1b1Name04.length() == 8) {
+												cout << "-- " << r1b1Name04 << " --";
+											} else if(r1b1Name04.length() == 9) {
+												cout << "- " << r1b1Name04 << " --";
+											} else if(r1b1Name04.length() == 10) {
+												cout << "- " << r1b1Name04 << " -";
+											}
+
+											cout << "||- Health -||- ";
+
+											// Just some calculations
+											hashCount = r1b1Health04 / 50;
+											equalCount = 20 - hashCount;
+
+											// Create bar
+											for(int i = 0; i < hashCount; i++) {
+												cout << "#";
+											}
+											for(int i = 0; i < equalCount; i++) {
+												cout << "=";
+											}
+
+											cout << " -||- ";
+
+											if(r1b1Health04 < 100 && r1b1Health04 >= 10) {
+												cout << "00" << r1b1Health04;
+											} else if(r1b1Health04 < 1000 && r1b1Health04 >= 100) {
+												cout << "0" << r1b1Health04;
+											} else {
+												cout << r1b1Health04;
+											}
+
+											cout << " -||\n";
+
+											cout << "||";
+
+											if(r1b1Name04.length() == 1) {
+												cout << "----- " << r1b1Name04 << " ------";
+											} else if(r1b1Name04.length() == 2) {
+												cout << "----- " << r1b1Name04 << " -----";
+											} else if(r1b1Name04.length() == 3) {
+												cout << "---- " << r1b1Name04 << " -----";
+											} else if(r1b1Name04.length() == 4) {
+												cout << "---- " << r1b1Name04 << " ----";
+											} else if(r1b1Name04.length() == 5) {
+												cout << "--- " << r1b1Name04 << " ----";
+											} else if(r1b1Name04.length() == 6) {
+												cout << "--- " << r1b1Name04 << " ---";
+											} else if(r1b1Name04.length() == 7) {
+												cout << "-- " << r1b1Name04 << " ---";
+											} else if(r1b1Name04.length() == 8) {
+												cout << "-- " << r1b1Name04 << " --";
+											} else if(r1b1Name04.length() == 9) {
+												cout << "- " << r1b1Name04 << " --";
+											} else if(r1b1Name04.length() == 10) {
+												cout << "- " << r1b1Name04 << " -";
+											}
+
+											cout << "||- Attack -||- ";
+
+											// Just some calculations
+											hashCount = r1b1Attack04 / 10;
+											equalCount = 20 - hashCount;
+
+											// Create bar
+											for(int i = 0; i < hashCount; i++) {
+												cout << "#";
+											}
+											for(int i = 0; i < equalCount; i++) {
+												cout << "=";
+											}
+
+											cout << " -||- ";
+
+											if(r1b1Attack04 < 100 && r1b1Attack04 >= 10) {
+												cout << "00" << r1b1Attack04;
+											} else if(r1b1Attack04 < 1000 && r1b1Attack04 >= 100) {
+												cout << "0" << r1b1Attack04;
+											} else {
+												cout << r1b1Attack04;
+											}
+
+											cout << " -||\n";
 										}
-
-										cout << "||- Health -||- ";
-
-										// Just some calculations
-										hashCount = r1b1Health00 / 50;
-										equalCount = 20 - hashCount;
-
-										// Create bar
-										for(int i = 0; i < hashCount; i++) {
-											cout << "#";
-										}
-										for(int i = 0; i < equalCount; i++) {
-											cout << "=";
-										}
-
-										cout << " -||- ";
-
-										if(r1b1Health00 < 100 && r1b1Health00 >= 10) {
-											cout << "00" << heroHealth00;
-										} else if(r1b1Health00 < 1000 && r1b1Health00 >= 100) {
-											cout << "0" << heroHealth00;
-										} else {
-											cout << r1b1Health00;
-										}
-
-										cout << " -||\n";
-
-										cout << "||";
-
-										if(r1b1Name00.length() == 1) {
-											cout << "----- " << r1b1Name00 << " ------";
-										} else if(r1b1Name00.length() == 2) {
-											cout << "----- " << r1b1Name00 << " -----";
-										} else if(r1b1Name00.length() == 3) {
-											cout << "---- " << r1b1Name00 << " -----";
-										} else if(r1b1Name00.length() == 4) {
-											cout << "---- " << r1b1Name00 << " ----";
-										} else if(r1b1Name00.length() == 5) {
-											cout << "--- " << r1b1Name00 << " ----";
-										} else if(r1b1Name00.length() == 6) {
-											cout << "--- " << r1b1Name00 << " ---";
-										} else if(r1b1Name00.length() == 7) {
-											cout << "-- " << r1b1Name00 << " ---";
-										} else if(r1b1Name00.length() == 8) {
-											cout << "-- " << r1b1Name00 << " --";
-										} else if(r1b1Name00.length() == 9) {
-											cout << "- " << r1b1Name00 << " --";
-										} else if(r1b1Name00.length() == 10) {
-											cout << "- " << r1b1Name00 << " -";
-										}
-
-										cout << "||- Attack -||- ";
-
-										// Just some calculations
-										hashCount = r1b1Attack00 / 10;
-										equalCount = 20 - hashCount;
-
-										// Create bar
-										for(int i = 0; i < hashCount; i++) {
-											cout << "#";
-										}
-										for(int i = 0; i < equalCount; i++) {
-											cout << "=";
-										}
-
-										cout << " -||- ";
-
-										if(r1b1Attack00 < 100 && r1b1Attack00 >= 10) {
-											cout << "00" << r1b1Attack00;
-										} else if(r1b1Attack00 < 1000 && r1b1Attack00 >= 100) {
-											cout << "0" << r1b1Attack00;
-										} else {
-											cout << r1b1Attack00;
-										}
-
-										cout << " -||\n";
 
 										cout << "||--------------------------------------------------------------||\n";
 									}
@@ -1256,40 +1765,242 @@ int main() {
 								if(menuSelection == 1) {
 									// Battle time
 
-									// Get the random generation going
-									uniform_int_distribution<int> theHero(1, numHeroes);
-									uniform_int_distribution<int> theMonster(1, r1b1Units);
-									uniform_int_distribution<int> totalUnits(1, (numHeroes + r1b1Units);
+									// Acquire total health points for heroes and monsters
 
-									// Store names of two units that will be attacking
-									string heroName;
-									int heroAttack;
-									string monsterName;
-									int monsterAttack;
-									int heroUnit = theHero(randomGenerator);
-									int monsterUnit = theMonster(randomGenerator);
+									// Heroes
+									heroHealth += heroHealth00;
+									heroHealth += heroHealth01;
+									heroHealth += heroHealth02;
+									heroHealth += heroHealth03;
+									heroHealth += heroHealth04;
 
-									// Obtain unit details
-									if(heroUnit == 1) {
-										heroName = heroName00;
-										heroAttack = heroAttack00;
+									// Monsters
+									monsterHealth += r1b1Health00;
+									monsterHealth += r1b1Health01;
+									monsterHealth += r1b1Health02;
+									monsterHealth += r1b1Health03;
+									monsterHealth += r1b1Health04;
+
+									// Loop battle until we have a winner
+									while(playing) {
+										// Get the random generation going
+										uniform_int_distribution<int> theHero(1, numHeroes);
+										uniform_int_distribution<int> theMonster(1, r1b1Units);
+										uniform_int_distribution<int> totalUnits(1, (numHeroes + r1b1Units));
+
+										// Store names of two units that will be attacking
+										string heroName;
+										int heroAttack = 0;
+										string monsterName;
+										int monsterAttack = 0;
+										int heroUnit = 0;
+										int monsterUnit = 0;
+
+										// Obtain hero details. If unit is not active loop through
+										// until we find one that is.
+										while(playing) {
+											heroUnit = theHero(randomGenerator);
+											
+											if(heroUnit == 1 && heroActive00) {
+												heroName = heroName00;
+												heroAttack = heroAttack00;
+												playing = false;
+											} else if(heroUnit == 2 && heroActive01) {
+												heroName = heroName01;
+												heroAttack = heroAttack01;
+												playing = false;
+											} else if(heroUnit == 3 && heroActive02) {
+												heroName = heroName02;
+												heroAttack = heroAttack02;
+												playing = false;
+											} else if(heroUnit == 4 && heroActive03) {
+												heroName = heroName03;
+												heroAttack = heroAttack03;
+												playing = false;
+											} else if(heroUnit == 5 && heroActive04) {
+												heroName = heroName04;
+												heroAttack = heroAttack04;
+												playing = false;
+											}
+										}
+
+										playing = true;
+
+										// Obtain monster details. If unit is not active loop through
+										// until we find one that is.
+										while(playing) {
+											monsterUnit = theMonster(randomGenerator);
+
+											if(monsterUnit == 1 && r1b1Active00) {
+												monsterName = r1b1Name00;
+												monsterAttack = r1b1Attack00;
+												playing = false;
+											} else if(monsterUnit == 2 && r1b1Active00) {
+												monsterName = r1b1Name01;
+												monsterAttack = r1b1Attack01;
+												playing = false;
+											} else if(monsterUnit == 3 && r1b1Active00) {
+												monsterName = r1b1Name02;
+												monsterAttack = r1b1Attack02;
+												playing = false;
+											} else if(monsterUnit == 4 && r1b1Active00) {
+												monsterName = r1b1Name03;
+												monsterAttack = r1b1Attack03;
+												playing = false;
+											} else if(monsterUnit == 5 && r1b1Active00) {
+												monsterName = r1b1Name04;
+												monsterAttack = r1b1Attack04;
+												playing = false;
+											}
+										}
+
+										playing = true;
+
+										// Time to choose who's attacking
+
+										// 'int variable' will hold the total amount of units (heroes + monsters).
+										// Whichever side has the most units will have a greater chance of being
+										// selected to attack.
+										int variable = totalUnits(randomGenerator);
+										int attackingSide;
+
+										if(variable > 0 && variable <= numHeroes) {
+											attackingSide = 0;
+										} else if(variable > numHeroes <= r1b1Units) {
+											attackingSide = 1;
+										}
+
+										if(attackingSide == 0) {
+											// Heroes attacking
+
+											if(monsterUnit == 1) {
+												r1b1Health00 -= heroAttack;
+												monsterHealth -= heroAttack;
+												if(r1b1Health00 <= 0) {
+													r1b1Health00 = 0;
+													r1b1Attack01 = 0;
+													r1b1Active00 = false;
+													r1b1Units--;
+												}
+											} else if(monsterUnit == 2) {
+												r1b1Health01 -= heroAttack;
+												monsterHealth -= heroAttack;
+												if(r1b1Health01 <= 0) {
+													r1b1Health01 = 0;
+													r1b1Attack01 = 0;
+													r1b1Active01 = false;
+													r1b1Units--;
+												}
+											} else if(monsterUnit == 3) {
+												r1b1Health02 -= heroAttack;
+												monsterHealth -= heroAttack;
+												if(r1b1Health02 <= 0) {
+													r1b1Health02 = 0;
+													r1b1Attack02 = 0;
+													r1b1Active02 = false;
+													r1b1Units--;
+												}
+											} else if(monsterUnit == 4) {
+												r1b1Health03 -= heroAttack;
+												monsterHealth -= heroAttack;
+												if(r1b1Health03 <= 0) {
+													r1b1Health03 = 0;
+													r1b1Attack03 = 0;
+													r1b1Active03 = false;
+													r1b1Units--;
+												}
+											} else if(monsterUnit == 5) {
+												r1b1Health04 -= heroAttack;
+												monsterHealth -= heroAttack;
+												if(r1b1Health04 <= 0) {
+													r1b1Health04 = 0;
+													r1b1Attack04 = 0;
+													r1b1Active04 = false;
+													r1b1Units--;
+												}
+											}
+										} else if(attackingSide == 1) {
+											// Monsters attacking
+											if(heroUnit == 1) {
+												heroHealth00 -= monsterAttack;
+												heroHealth -= monsterAttack;
+												if(heroHealth00 <= 0) {
+													heroActive00 = false;
+													numHeroes--;
+												}
+											} else if(heroUnit == 2) {
+												heroHealth01 -= monsterAttack;
+												heroHealth -= monsterAttack;
+												if(heroHealth01 <= 0) {
+													heroHealth01 = 0;
+													heroAttack01 = 0;
+													heroActive01 = false;
+													heroUnit--;
+												}
+											} else if(heroUnit == 2) {
+												heroHealth01 -= monsterAttack;
+												heroHealth -= monsterAttack;
+												if(heroHealth02 <= 0) {
+													heroHealth02 = 0;
+													heroAttack02 = 0;
+													heroActive02 = false;
+													heroUnit--;
+												}
+											} else if(heroUnit == 2) {
+												heroHealth01 -= monsterAttack;
+												heroHealth -= monsterAttack;
+												if(heroHealth03 <= 0) {
+													heroHealth03 = 0;
+													heroAttack03 = 0;
+													heroActive03 = false;
+													heroUnit--;
+												}
+											} else if(heroUnit == 2) {
+												heroHealth01 -= monsterAttack;
+												heroHealth -= monsterAttack;
+												if(heroHealth04 <= 0) {
+													heroHealth04 = 0;
+													heroAttack04 = 0;
+													heroActive04 = false;
+													heroUnit--;
+												}
+											}
+										}
+
+										// Display battle results to user
+
+										// Crappy timer to slow loop
+
+										int num1 = 0;
+										int num2 = 0;
+
+										while(playing) {
+											num1++;
+											if(num1 >= 10000) {
+												num2++;
+											}
+
+											if(num2 >= 10000) {
+												playing = false;
+											}
+										}
+
+										playing = true;
+
+										num1 = 0;
+										num2 = 0;
+
+										cout << heroName << endl;
+										cout << monsterName << endl;
+										
+										if(!numHeroes <= 0 || !r1b1Units <= 0) {
+											playing = false;
+										}
 									}
 
-									if(monsterUnit == 1) {
-										monsterName = r1b1Name00;
-										monsterAttack = r1b1Attack00;
-									}
+									playing = true;
 
-									// Time to choose who's attacking
-									int variable = totalUnits(randomGenerator);
-									int attackingSide;
-
-									if(variable > 0 && variable <= numHeroes) {
-										attackingSide = 0;
-									} else if(variable > numHeroes <= r1b1Units) {
-										attackingSide = 1;
-									}
-
+									// Display end results to user
 
 								}
 							} else if(menuSelection == 2) {
@@ -2156,15 +2867,23 @@ int main() {
 
 						if(numHeroes == 1) {
 							heroName01 = menuString;
+							heroHealth01 = 50;
+							heroAttack01 = 10;
 							heroActive01 = true;
 						} else if(numHeroes == 2) {
 							heroName02 = menuString;
+							heroHealth01 = 50;
+							heroAttack01 = 10;
 							heroActive02 = true;
 						} else if(numHeroes == 3) {
 							heroName03 = menuString;
+							heroHealth01 = 50;
+							heroAttack01 = 10;
 							heroActive03 = true;
 						} else if(numHeroes == 4) {
 							heroName04 = menuString;
+							heroHealth01 = 50;
+							heroAttack01 = 10;
 							heroActive04 = true;
 						}
 
