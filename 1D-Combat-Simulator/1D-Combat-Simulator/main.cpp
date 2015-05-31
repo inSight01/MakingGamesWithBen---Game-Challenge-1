@@ -46,6 +46,7 @@ int main() {
 	// These variables will store players statistics
 
 	int    wonCredits       = 0;
+	int    lostCredits      = 0;
 	int    spentCredits     = 0;
 	int    currentCredits   = 100000;
 	int    conquestWins     = 0;
@@ -53,7 +54,6 @@ int main() {
 	int    friendlyWins     = 0;
 	int    friendlyDefeats  = 0;
 	int    regionsDestroyed = 0;
-	int    regionsActive    = 0;
 	int    numHeroes        = 0;
 	int    deadHeroes       = 0;
 	int    enemiesKilled    = 0;
@@ -62,10 +62,10 @@ int main() {
 
 	// These variables will be used during battles to hold total health points
 
-	int    heroTotalHealth         = 0;
-	int    heroCurrentHealth       = 0;
-	int    monsterTotalHealth      = 0;
-	int    monsterCurrentHealth    = 0;
+	float    heroTotalHealth         = 0.0f;
+	float    heroCurrentHealth       = 0.0f;
+	float    monsterTotalHealth      = 0.0f;
+	float    monsterCurrentHealth    = 0.0f;
 
 	// Variables for Hero 00
 
@@ -73,6 +73,7 @@ int main() {
 	int    heroTotalHealth00   = 0;
 	int    heroCurrentHealth00 = 0;
 	int    heroAttack00        = 0;
+	int    heroStatus00        = false;
 	bool   heroActive00        = false;
 
 	// Variables for Hero 01
@@ -81,6 +82,7 @@ int main() {
 	int    heroTotalHealth01   = 0;
 	int    heroCurrentHealth01 = 0;
 	int    heroAttack01        = 0;
+	int    heroStatus01        = false;
 	bool   heroActive01        = false;
 
 	// Variables for Hero 02
@@ -89,6 +91,7 @@ int main() {
 	int    heroTotalHealth02   = 0;
 	int    heroCurrentHealth02 = 0;
 	int    heroAttack02        = 0;
+	int    heroStatus02        = false;
 	bool   heroActive02        = false;
 
 	// Variables for Hero 03
@@ -97,6 +100,7 @@ int main() {
 	int    heroTotalHealth03   = 0;
 	int    heroCurrentHealth03 = 0;
 	int    heroAttack03        = 0;
+	int    heroStatus03        = false;
 	bool   heroActive03        = false;
 
 	// Variables for Hero 04
@@ -105,6 +109,7 @@ int main() {
 	int    heroTotalHealth04   = 0;
 	int    heroCurrentHealth04 = 0;
 	int    heroAttack04        = 0;
+	int    heroStatus04        = false;
 	bool   heroActive04        = false;
 
 	// Variables for Region 1
@@ -122,26 +127,31 @@ int main() {
 	int    r1b1TotalHealth00   = 50;
 	int    r1b1CurrentHealth00 = r1b1TotalHealth00;
 	int    r1b1Attack00        = 10;
+	bool   r1b1Status00        = true;
 	bool   r1b1Active00        = true;
 	string r1b1Name01          = "Monster 2";
 	int    r1b1TotalHealth01   = 50;
 	int    r1b1CurrentHealth01 = r1b1TotalHealth01;
 	int    r1b1Attack01        = 10;
+	bool   r1b1Status01        = true;
 	bool   r1b1Active01        = true;
 	string r1b1Name02          = "Monster 3";
 	int    r1b1TotalHealth02   = 50;
 	int    r1b1CurrentHealth02 = r1b1TotalHealth02;
 	int    r1b1Attack02        = 10;
+	bool   r1b1Status02        = true;
 	bool   r1b1Active02        = true;
 	string r1b1Name03          = "Monster 4";
 	int    r1b1TotalHealth03   = 50;
 	int    r1b1CurrentHealth03 = r1b1TotalHealth03;
 	int    r1b1Attack03        = 10;
+	bool   r1b1Status03        = true;
 	bool   r1b1Active03        = true;
 	string r1b1Name04          = "Monster 5";
 	int    r1b1TotalHealth04   = 50;
 	int    r1b1CurrentHealth04 = r1b1TotalHealth04;
 	int    r1b1Attack04        = 10;
+	bool   r1b1Status04        = true;
 	bool   r1b1Active04        = true;
 
 	// Base 2
@@ -379,7 +389,7 @@ int main() {
 
 		// Create random generator
 
-		default_random_engine randomGenerator;
+		default_random_engine randomGenerator(time(NULL));
 
 		if(newGame) {
 			cout << border;
@@ -425,12 +435,14 @@ int main() {
 				}
 			}
 
-			heroName00 = menuString;
-			heroTotalHealth00 = 50;
-			heroAttack00 = 10;
-			heroActive00 = true;
-			numHeroes = 1;
-			newGame = false;
+			heroName00          = menuString;
+			heroTotalHealth00   = 50;
+			heroCurrentHealth00 = heroTotalHealth00;
+			heroAttack00        = 10;
+			heroStatus00        = true;
+			heroActive00        = true;
+			numHeroes           = 1;
+			newGame             = false;
 		}
 
 		// Main Menu Screen
@@ -1350,9 +1362,9 @@ int main() {
 										cout << " -||- ";
 
 										if(r1b1TotalHealth00 < 100 && r1b1TotalHealth00 >= 10) {
-											cout << "00" << heroTotalHealth00;
+											cout << "00" << r1b1TotalHealth00;
 										} else if(r1b1TotalHealth00 < 1000 && r1b1TotalHealth00 >= 100) {
-											cout << "0" << heroTotalHealth00;
+											cout << "0" << r1b1TotalHealth00;
 										} else {
 											cout << r1b1TotalHealth00;
 										}
@@ -1902,7 +1914,7 @@ int main() {
 
 										// Store names of two units that will be attacking
 
-										string heroName = "";
+										string heroName      = "";
 										int    heroAttack    = 0;
 										string monsterName   = "";
 										int    monsterAttack = 0;
@@ -1915,23 +1927,23 @@ int main() {
 										while(playing) {
 											heroUnit = theHero(randomGenerator);
 											
-											if(heroUnit == 1 && heroActive00) {
+											if(heroUnit == 1 && heroStatus00) {
 												heroName   = heroName00;
 												heroAttack = heroAttack00;
 												playing    = false;
-											} else if(heroUnit == 2 && heroActive01) {
+											} else if(heroUnit == 2 && heroStatus01) {
 												heroName   = heroName01;
 												heroAttack = heroAttack01;
 												playing    = false;
-											} else if(heroUnit == 3 && heroActive02) {
+											} else if(heroUnit == 3 && heroStatus02) {
 												heroName   = heroName02;
 												heroAttack = heroAttack02;
 												playing    = false;
-											} else if(heroUnit == 4 && heroActive03) {
+											} else if(heroUnit == 4 && heroStatus03) {
 												heroName   = heroName03;
 												heroAttack = heroAttack03;
 												playing    = false;
-											} else if(heroUnit == 5 && heroActive04) {
+											} else if(heroUnit == 5 && heroStatus04) {
 												heroName   = heroName04;
 												heroAttack = heroAttack04;
 												playing    = false;
@@ -1946,23 +1958,23 @@ int main() {
 										while(playing) {
 											monsterUnit = theMonster(randomGenerator);
 
-											if(monsterUnit == 1 && r1b1Active00) {
+											if(monsterUnit == 1 && r1b1Status00) {
 												monsterName   = r1b1Name00;
 												monsterAttack = r1b1Attack00;
 												playing       = false;
-											} else if(monsterUnit == 2 && r1b1Active00) {
+											} else if(monsterUnit == 2 && r1b1Status01) {
 												monsterName   = r1b1Name01;
 												monsterAttack = r1b1Attack01;
 												playing       = false;
-											} else if(monsterUnit == 3 && r1b1Active00) {
+											} else if(monsterUnit == 3 && r1b1Status02) {
 												monsterName   = r1b1Name02;
 												monsterAttack = r1b1Attack02;
 												playing       = false;
-											} else if(monsterUnit == 4 && r1b1Active00) {
+											} else if(monsterUnit == 4 && r1b1Status03) {
 												monsterName   = r1b1Name03;
 												monsterAttack = r1b1Attack03;
 												playing       = false;
-											} else if(monsterUnit == 5 && r1b1Active00) {
+											} else if(monsterUnit == 5 && r1b1Status04) {
 												monsterName   = r1b1Name04;
 												monsterAttack = r1b1Attack04;
 												playing       = false;
@@ -1990,53 +2002,53 @@ int main() {
 											// Heroes attacking
 
 											if(monsterUnit == 1) {
-												r1b1TotalHealth00  -= heroAttack;
-												monsterTotalHealth -= heroAttack;
+												r1b1CurrentHealth00  -= heroAttack;
+												monsterCurrentHealth -= heroAttack;
 
-												if(r1b1TotalHealth00 <= 0) {
+												if(r1b1CurrentHealth00 <= 0) {
 													r1b1TotalHealth00 = 0;
-													r1b1Attack01 = 0;
-													r1b1Active00 = false;
+													r1b1Attack01      = 0;
+													r1b1Status00      = false;
 													r1b1Units--;
 												}
 											} else if(monsterUnit == 2) {
-												r1b1TotalHealth01  -= heroAttack;
-												monsterTotalHealth -= heroAttack;
+												r1b1CurrentHealth01  -= heroAttack;
+												monsterCurrentHealth -= heroAttack;
 
-												if(r1b1TotalHealth01 <= 0) {
+												if(r1b1CurrentHealth01 <= 0) {
 													r1b1TotalHealth01 = 0;
-													r1b1Attack01 = 0;
-													r1b1Active01 = false;
+													r1b1Attack01      = 0;
+													r1b1Status01      = false;
 													r1b1Units--;
 												}
 											} else if(monsterUnit == 3) {
-												r1b1TotalHealth02  -= heroAttack;
-												monsterTotalHealth -= heroAttack;
+												r1b1CurrentHealth02  -= heroAttack;
+												monsterCurrentHealth -= heroAttack;
 
-												if(r1b1TotalHealth02 <= 0) {
+												if(r1b1CurrentHealth02 <= 0) {
 													r1b1TotalHealth02 = 0;
-													r1b1Attack02 = 0;
-													r1b1Active02 = false;
+													r1b1Attack02      = 0;
+													r1b1Status02      = false;
 													r1b1Units--;
 												}
 											} else if(monsterUnit == 4) {
-												r1b1TotalHealth03  -= heroAttack;
-												monsterTotalHealth -= heroAttack;
+												r1b1CurrentHealth03  -= heroAttack;
+												monsterCurrentHealth -= heroAttack;
 
-												if(r1b1TotalHealth03 <= 0) {
+												if(r1b1CurrentHealth03 <= 0) {
 													r1b1TotalHealth03 = 0;
-													r1b1Attack03 = 0;
-													r1b1Active03 = false;
+													r1b1Attack03      = 0;
+													r1b1Status03      = false;
 													r1b1Units--;
 												}
 											} else if(monsterUnit == 5) {
-												r1b1TotalHealth04  -= heroAttack;
-												monsterTotalHealth -= heroAttack;
+												r1b1CurrentHealth04  -= heroAttack;
+												monsterCurrentHealth -= heroAttack;
 
-												if(r1b1TotalHealth04 <= 0) {
+												if(r1b1CurrentHealth04 <= 0) {
 													r1b1TotalHealth04 = 0;
-													r1b1Attack04 = 0;
-													r1b1Active04 = false;
+													r1b1Attack04      = 0;
+													r1b1Status04      = false;
 													r1b1Units--;
 												}
 											}
@@ -2044,51 +2056,51 @@ int main() {
 											// Monsters attacking
 
 											if(heroUnit == 1) {
-												heroTotalHealth00 -= monsterAttack;
-												heroTotalHealth   -= monsterAttack;
+												heroCurrentHealth00 -= monsterAttack;
+												heroCurrentHealth   -= monsterAttack;
 
-												if(heroTotalHealth00 <= 0) {
-													heroActive00 = false;
+												if(heroCurrentHealth00 <= 0) {
+													heroStatus00 = false;
 													numHeroes--;
 												}
 											} else if(heroUnit == 2) {
-												heroTotalHealth01 -= monsterAttack;
-												heroTotalHealth   -= monsterAttack;
+												heroCurrentHealth01 -= monsterAttack;
+												heroCurrentHealth   -= monsterAttack;
 
-												if(heroTotalHealth01 <= 0) {
+												if(heroCurrentHealth01 <= 0) {
 													heroTotalHealth01 = 0;
-													heroAttack01 = 0;
-													heroActive01 = false;
+													heroAttack01      = 0;
+													heroStatus01      = false;
 													heroUnit--;
 												}
-											} else if(heroUnit == 2) {
-												heroTotalHealth01 -= monsterAttack;
-												heroTotalHealth   -= monsterAttack;
+											} else if(heroUnit == 3) {
+												heroCurrentHealth01 -= monsterAttack;
+												heroCurrentHealth   -= monsterAttack;
 
-												if(heroTotalHealth02 <= 0) {
+												if(heroCurrentHealth02 <= 0) {
 													heroTotalHealth02 = 0;
-													heroAttack02 = 0;
-													heroActive02 = false;
+													heroAttack02      = 0;
+													heroStatus02      = false;
 													heroUnit--;
 												}
-											} else if(heroUnit == 2) {
-												heroTotalHealth01 -= monsterAttack;
-												heroTotalHealth   -= monsterAttack;
+											} else if(heroUnit == 4) {
+												heroCurrentHealth01 -= monsterAttack;
+												heroCurrentHealth   -= monsterAttack;
 
-												if(heroTotalHealth03 <= 0) {
+												if(heroCurrentHealth03 <= 0) {
 													heroTotalHealth03 = 0;
-													heroAttack03 = 0;
-													heroActive03 = false;
+													heroAttack03      = 0;
+													heroStatus03      = false;
 													heroUnit--;
 												}
-											} else if(heroUnit == 2) {
-												heroTotalHealth01 -= monsterAttack;
-												heroTotalHealth   -= monsterAttack;
+											} else if(heroUnit == 5) {
+												heroCurrentHealth04 -= monsterAttack;
+												heroCurrentHealth   -= monsterAttack;
 
-												if(heroTotalHealth04 <= 0) {
+												if(heroCurrentHealth04 <= 0) {
 													heroTotalHealth04 = 0;
-													heroAttack04 = 0;
-													heroActive04 = false;
+													heroAttack04      = 0;
+													heroStatus04      = false;
 													heroUnit--;
 												}
 											}
@@ -2103,7 +2115,7 @@ int main() {
 										cout << "||-----------------------------------------------------------------------||\n";
 										cout << "||-- Heroes --||- ";
 										
-										hashCount = heroTotalHealth / 50.00f;
+										hashCount  = (heroCurrentHealth / heroTotalHealth) * 43.0f;
 										equalCount = 43.00f - hashCount;
 
 										// Create bar
@@ -2111,22 +2123,22 @@ int main() {
 										for(int i = 0; i < hashCount; i++) {
 											cout << "#";
 										}
-										for(int i = 0; i < equalCount; i++) {
+										for(int i = 0; i < equalCount - 1; i++) {
 											cout << "=";
 										}
 										
 										cout << " -||- ";
 										
-										if(heroTotalHealth >= 10000) {
+										if(heroCurrentHealth >= 10000) {
 											cout << "9999";
-										} else if(heroTotalHealth >= 1000 && heroTotalHealth < 10000) {
-											cout << heroTotalHealth;
-										} else if(heroTotalHealth >= 100 && heroTotalHealth < 1000) {
-											cout << "0" << heroTotalHealth;
-										} else if(heroTotalHealth >= 10 && heroTotalHealth < 100) {
-											cout << "00" << heroTotalHealth;
-										} else if(heroTotalHealth >= 1 && heroTotalHealth < 10) {
-											cout << "000" << heroTotalHealth;
+										} else if(heroCurrentHealth >= 1000 && heroCurrentHealth < 10000) {
+											cout << heroCurrentHealth;
+										} else if(heroCurrentHealth >= 100 && heroCurrentHealth < 1000) {
+											cout << "0" << heroCurrentHealth;
+										} else if(heroCurrentHealth >= 10 && heroCurrentHealth < 100) {
+											cout << "00" << heroCurrentHealth;
+										} else if(heroCurrentHealth >= 1 && heroCurrentHealth < 10) {
+											cout << "000" << heroCurrentHealth;
 										} else {
 											cout << "0000";
 										}
@@ -2134,18 +2146,32 @@ int main() {
 										cout << " -||\n";
 
 										cout << "||-----------------------------------------------------------------------||\n";
-										cout << "||- Monsters -||- ########################################### -||- ";
+										cout << "||- Monsters -||- ";
+
+										hashCount  = (monsterCurrentHealth / monsterTotalHealth) * 43.0f;
+										equalCount = 43.00f - hashCount;
+
+										// Create bar
+
+										for(int i = 0; i < hashCount; i++) {
+											cout << "#";
+										}
+										for(int i = 0; i < equalCount - 1; i++) {
+											cout << "=";
+										}
+
+										cout << " -||- ";
 										
-										if(monsterTotalHealth >= 10000) {
+										if(monsterCurrentHealth >= 10000) {
 											cout << "9999";
-										} else if(monsterTotalHealth >= 1000 && monsterTotalHealth < 10000) {
-											cout << monsterTotalHealth;
-										} else if(monsterTotalHealth >= 100 && monsterTotalHealth < 1000) {
-											cout << "0" << monsterTotalHealth;
-										} else if(monsterTotalHealth >= 10 && monsterTotalHealth < 100) {
-											cout << "00" << monsterTotalHealth;
-										} else if(monsterTotalHealth >= 1 && monsterTotalHealth < 10) {
-											cout << "000" << monsterTotalHealth;
+										} else if(monsterCurrentHealth >= 1000 && monsterCurrentHealth < 10000) {
+											cout << monsterCurrentHealth;
+										} else if(monsterCurrentHealth >= 100 && monsterCurrentHealth < 1000) {
+											cout << "0" << monsterCurrentHealth;
+										} else if(monsterCurrentHealth >= 10 && monsterCurrentHealth < 100) {
+											cout << "00" << monsterCurrentHealth;
+										} else if(monsterCurrentHealth >= 1 && monsterCurrentHealth < 10) {
+											cout << "000" << monsterCurrentHealth;
 										} else {
 											cout << "0000";
 										}
@@ -2166,16 +2192,535 @@ int main() {
 
 										cout << spacer;
 
-										cout << "||-------------------------------- STATUS -------------------------------||\n";
-										cout << "||-----------------------------------||----------------------------------||\n";
-										cout << "||---------- Heroes -----------------||------------ Monsters ------------||\n";
-										cout << "||-----------------------------------||----------------------------------||\n";
-										cout << "||--- Hero 1 ---||- 0000 -||- ALIVE -||- Monster 1 -||- 0000 -||- ALIVE -||\n";
-										cout << "||--- Hero 2 ---||- 0000 -||- ALIVE -||- Monster 2 -||- 0000 -||- ALIVE -||\n";
-										cout << "||--- Hero 3 ---||- 0000 -||- ALIVE -||- Monster 3 -||- 0000 -||- ALIVE -||\n";
-										cout << "||--- Hero 4 ---||- 0000 -||- ALIVE -||- Monster 4 -||- 0000 -||- ALIVE -||\n";
-										cout << "||--- Hero 5 ---||- 0000 -||- ALIVE -||- Monster 5 -||- 0000 -||- ALIVE -||\n";
-										cout << "||-----------------------------------||----------------------------------||\n";
+										cout << "||---------- Heroes -----------------||\n";
+										cout << "||-----------------------------------||\n";
+
+										if(heroActive00) { 
+											cout << "||";
+
+											if(heroName00.length() == 1) {
+												cout << "----- " << heroName00 << " ------";
+											} else if(heroName00.length() == 2) {
+												cout << "----- " << heroName00 << " -----";
+											} else if(heroName00.length() == 3) {
+												cout << "---- " << heroName00 << " -----";
+											} else if(heroName00.length() == 4) {
+												cout << "---- " << heroName00 << " ----";
+											} else if(heroName00.length() == 5) {
+												cout << "--- " << heroName00 << " ----";
+											} else if(heroName00.length() == 6) {
+												cout << "--- " << heroName00 << " ---";
+											} else if(heroName00.length() == 7) {
+												cout << "-- " << heroName00 << " ---";
+											} else if(heroName00.length() == 8) {
+												cout << "-- " << heroName00 << " --";
+											} else if(heroName00.length() == 9) {
+												cout << "- " << heroName00 << " --";
+											} else if(heroName00.length() == 10) {
+												cout << "- " << heroName00 << " -";
+											}
+
+											cout << "||- ";
+
+											if(heroCurrentHealth00 >= 10000) {
+												cout << "9999";
+											} else if(heroCurrentHealth00 >= 1000 && heroCurrentHealth00 < 10000) {
+												cout << heroCurrentHealth00;
+											} else if(heroCurrentHealth00 >= 100 && heroCurrentHealth00 < 1000) {
+												cout << "0" << heroCurrentHealth00;
+											} else if(heroCurrentHealth00 >= 10 && heroCurrentHealth00 < 100) {
+												cout << "00" << heroCurrentHealth00;
+											} else if(heroCurrentHealth00 >= 1 && heroCurrentHealth00 < 10) {
+												cout << "000" << heroCurrentHealth00;
+											} else {
+												cout << "0000";
+											}
+
+											cout << " -||";
+
+											if(heroStatus00) {
+												cout << "- ALIVE -";
+											} else if(!heroStatus00) {
+												cout << "- DEAD --";
+											}
+
+											cout << "||\n";
+										}
+										
+										if(heroActive01) {
+											cout << "||";
+
+											if(heroName01.length() == 1) {
+												cout << "----- " << heroName01 << " ------";
+											} else if(heroName01.length() == 2) {
+												cout << "----- " << heroName01 << " -----";
+											} else if(heroName01.length() == 3) {
+												cout << "---- " << heroName01 << " -----";
+											} else if(heroName01.length() == 4) {
+												cout << "---- " << heroName01 << " ----";
+											} else if(heroName01.length() == 5) {
+												cout << "--- " << heroName01 << " ----";
+											} else if(heroName01.length() == 6) {
+												cout << "--- " << heroName01 << " ---";
+											} else if(heroName01.length() == 7) {
+												cout << "-- " << heroName01 << " ---";
+											} else if(heroName01.length() == 8) {
+												cout << "-- " << heroName01 << " --";
+											} else if(heroName01.length() == 9) {
+												cout << "- " << heroName01 << " --";
+											} else if(heroName01.length() == 10) {
+												cout << "- " << heroName01 << " -";
+											}
+
+											cout << "||- ";
+
+											if(heroCurrentHealth01 >= 10000) {
+												cout << "9999";
+											} else if(heroCurrentHealth01 >= 1000 && heroCurrentHealth01 < 10000) {
+												cout << heroCurrentHealth01;
+											} else if(heroCurrentHealth01 >= 100 && heroCurrentHealth01 < 1000) {
+												cout << "0" << heroCurrentHealth01;
+											} else if(heroCurrentHealth01 >= 10 && heroCurrentHealth01 < 100) {
+												cout << "00" << heroCurrentHealth01;
+											} else if(heroCurrentHealth01 >= 1 && heroCurrentHealth01 < 10) {
+												cout << "000" << heroCurrentHealth01;
+											} else {
+												cout << "0000";
+											}
+
+											cout << " -||";
+
+											if(heroStatus01) {
+												cout << "- ALIVE -";
+											} else if(!heroStatus01) {
+												cout << "- DEAD --";
+											}
+
+											cout << "||\n";
+										}
+
+										if(heroActive02) {
+											cout << "||";
+
+											if(heroName02.length() == 1) {
+												cout << "----- " << heroName02 << " ------";
+											} else if(heroName02.length() == 2) {
+												cout << "----- " << heroName02 << " -----";
+											} else if(heroName02.length() == 3) {
+												cout << "---- " << heroName02 << " -----";
+											} else if(heroName02.length() == 4) {
+												cout << "---- " << heroName02 << " ----";
+											} else if(heroName02.length() == 5) {
+												cout << "--- " << heroName02 << " ----";
+											} else if(heroName02.length() == 6) {
+												cout << "--- " << heroName02 << " ---";
+											} else if(heroName02.length() == 7) {
+												cout << "-- " << heroName02 << " ---";
+											} else if(heroName02.length() == 8) {
+												cout << "-- " << heroName02 << " --";
+											} else if(heroName02.length() == 9) {
+												cout << "- " << heroName02 << " --";
+											} else if(heroName02.length() == 10) {
+												cout << "- " << heroName02 << " -";
+											}
+
+											cout << "||- ";
+
+											if(heroCurrentHealth02 >= 10000) {
+												cout << "9999";
+											} else if(heroCurrentHealth02 >= 1000 && heroCurrentHealth02 < 10000) {
+												cout << heroCurrentHealth02;
+											} else if(heroCurrentHealth02 >= 100 && heroCurrentHealth02 < 1000) {
+												cout << "0" << heroCurrentHealth02;
+											} else if(heroCurrentHealth02 >= 10 && heroCurrentHealth02 < 100) {
+												cout << "00" << heroCurrentHealth02;
+											} else if(heroCurrentHealth02 >= 1 && heroCurrentHealth02 < 10) {
+												cout << "000" << heroCurrentHealth02;
+											} else {
+												cout << "0000";
+											}
+
+											cout << " -||";
+
+											if(heroStatus02) {
+												cout << "- ALIVE -";
+											} else if(!heroStatus02) {
+												cout << "- DEAD --";
+											}
+
+											cout << "||\n";
+										}
+
+										if(heroActive03) {
+											cout << "||";
+
+											if(heroName03.length() == 1) {
+												cout << "----- " << heroName03 << " ------";
+											} else if(heroName03.length() == 2) {
+												cout << "----- " << heroName03 << " -----";
+											} else if(heroName03.length() == 3) {
+												cout << "---- " << heroName03 << " -----";
+											} else if(heroName03.length() == 4) {
+												cout << "---- " << heroName03 << " ----";
+											} else if(heroName03.length() == 5) {
+												cout << "--- " << heroName03 << " ----";
+											} else if(heroName03.length() == 6) {
+												cout << "--- " << heroName03 << " ---";
+											} else if(heroName03.length() == 7) {
+												cout << "-- " << heroName03 << " ---";
+											} else if(heroName03.length() == 8) {
+												cout << "-- " << heroName03 << " --";
+											} else if(heroName03.length() == 9) {
+												cout << "- " << heroName03 << " --";
+											} else if(heroName03.length() == 10) {
+												cout << "- " << heroName03 << " -";
+											}
+
+											cout << "||- ";
+
+											if(heroCurrentHealth03 >= 10000) {
+												cout << "9999";
+											} else if(heroCurrentHealth03 >= 1000 && heroCurrentHealth03 < 10000) {
+												cout << heroCurrentHealth03;
+											} else if(heroCurrentHealth03 >= 100 && heroCurrentHealth03 < 1000) {
+												cout << "0" << heroCurrentHealth03;
+											} else if(heroCurrentHealth03 >= 10 && heroCurrentHealth03 < 100) {
+												cout << "00" << heroCurrentHealth03;
+											} else if(heroCurrentHealth03 >= 1 && heroCurrentHealth03 < 10) {
+												cout << "000" << heroCurrentHealth03;
+											} else {
+												cout << "0000";
+											}
+
+											cout << " -||";
+
+											if(heroStatus03) {
+												cout << "- ALIVE -";
+											} else if(!heroStatus03) {
+												cout << "- DEAD --";
+											}
+
+											cout << "||\n";
+										}
+
+										if(heroActive04) {
+											cout << "||";
+
+											if(heroName04.length() == 1) {
+												cout << "----- " << heroName04 << " ------";
+											} else if(heroName04.length() == 2) {
+												cout << "----- " << heroName04 << " -----";
+											} else if(heroName04.length() == 3) {
+												cout << "---- " << heroName04 << " -----";
+											} else if(heroName04.length() == 4) {
+												cout << "---- " << heroName04 << " ----";
+											} else if(heroName04.length() == 5) {
+												cout << "--- " << heroName04 << " ----";
+											} else if(heroName04.length() == 6) {
+												cout << "--- " << heroName04 << " ---";
+											} else if(heroName04.length() == 7) {
+												cout << "-- " << heroName04 << " ---";
+											} else if(heroName04.length() == 8) {
+												cout << "-- " << heroName04 << " --";
+											} else if(heroName04.length() == 9) {
+												cout << "- " << heroName04 << " --";
+											} else if(heroName04.length() == 10) {
+												cout << "- " << heroName04 << " -";
+											}
+
+											cout << "||- ";
+
+											if(heroCurrentHealth04 >= 10000) {
+												cout << "9999";
+											} else if(heroCurrentHealth04 >= 1000 && heroCurrentHealth04 < 10000) {
+												cout << heroCurrentHealth00;
+											} else if(heroCurrentHealth04 >= 100 && heroCurrentHealth04 < 1000) {
+												cout << "0" << heroCurrentHealth04;
+											} else if(heroCurrentHealth04 >= 10 && heroCurrentHealth04 < 100) {
+												cout << "00" << heroCurrentHealth04;
+											} else if(heroCurrentHealth04 >= 1 && heroCurrentHealth04 < 10) {
+												cout << "000" << heroCurrentHealth04;
+											} else {
+												cout << "0000";
+											}
+
+											cout << " -||";
+
+											if(heroStatus04) {
+												cout << "- ALIVE -";
+											} else if(!heroStatus04) {
+												cout << "- DEAD --";
+											}
+
+											cout << "||\n";
+										}
+
+										cout << "||-----------------------------------||\n";
+
+										cout << spacer;
+
+										cout << "||------------- Monsters ------------||\n";
+										cout << "||-----------------------------------||\n";
+										
+										if(r1b1Active00) {
+											cout << "||";
+
+											if(r1b1Name00.length() == 1) {
+												cout << "----- " << r1b1Name00 << " ------";
+											} else if(r1b1Name00.length() == 2) {
+												cout << "----- " << r1b1Name00 << " -----";
+											} else if(r1b1Name00.length() == 3) {
+												cout << "---- " << r1b1Name00 << " -----";
+											} else if(r1b1Name00.length() == 4) {
+												cout << "---- " << r1b1Name00 << " ----";
+											} else if(r1b1Name00.length() == 5) {
+												cout << "--- " << r1b1Name00 << " ----";
+											} else if(r1b1Name00.length() == 6) {
+												cout << "--- " << r1b1Name00 << " ---";
+											} else if(r1b1Name00.length() == 7) {
+												cout << "-- " << r1b1Name00 << " ---";
+											} else if(r1b1Name00.length() == 8) {
+												cout << "-- " << r1b1Name00 << " --";
+											} else if(r1b1Name00.length() == 9) {
+												cout << "- " << r1b1Name00 << " --";
+											} else if(r1b1Name00.length() == 10) {
+												cout << "- " << r1b1Name00 << " -";
+											}
+
+											cout << "||- ";
+
+											if(r1b1CurrentHealth00 >= 10000) {
+												cout << "9999";
+											} else if(r1b1CurrentHealth00 >= 1000 && r1b1CurrentHealth00 < 10000) {
+												cout << r1b1CurrentHealth00;
+											} else if(r1b1CurrentHealth00 >= 100 && r1b1CurrentHealth00 < 1000) {
+												cout << "0" << r1b1CurrentHealth00;
+											} else if(r1b1CurrentHealth00 >= 10 && r1b1CurrentHealth00 < 100) {
+												cout << "00" << r1b1CurrentHealth00;
+											} else if(r1b1CurrentHealth00 >= 1 && r1b1CurrentHealth00 < 10) {
+												cout << "000" << r1b1CurrentHealth00;
+											} else {
+												cout << "0000";
+											}
+
+											cout << " -||";
+
+											if(r1b1Status00) {
+												cout << "- ALIVE -";
+											} else if(!r1b1Status00) {
+												cout << "- DEAD --";
+											}
+
+											cout << "||\n";
+										}
+										
+										if(r1b1Active01) {
+											cout << "||";
+
+											if(r1b1Name01.length() == 1) {
+												cout << "----- " << r1b1Name01 << " ------";
+											} else if(r1b1Name01.length() == 2) {
+												cout << "----- " << r1b1Name01 << " -----";
+											} else if(r1b1Name01.length() == 3) {
+												cout << "---- " << r1b1Name01 << " -----";
+											} else if(r1b1Name01.length() == 4) {
+												cout << "---- " << r1b1Name01 << " ----";
+											} else if(r1b1Name01.length() == 5) {
+												cout << "--- " << r1b1Name01 << " ----";
+											} else if(r1b1Name01.length() == 6) {
+												cout << "--- " << r1b1Name01 << " ---";
+											} else if(r1b1Name01.length() == 7) {
+												cout << "-- " << r1b1Name01 << " ---";
+											} else if(r1b1Name01.length() == 8) {
+												cout << "-- " << r1b1Name01 << " --";
+											} else if(r1b1Name01.length() == 9) {
+												cout << "- " << r1b1Name01 << " --";
+											} else if(r1b1Name01.length() == 10) {
+												cout << "- " << r1b1Name01 << " -";
+											}
+
+											cout << "||- ";
+
+											if(r1b1CurrentHealth01 >= 10000) {
+												cout << "9999";
+											} else if(r1b1CurrentHealth01 >= 1000 && r1b1CurrentHealth01 < 10000) {
+												cout << r1b1CurrentHealth01;
+											} else if(r1b1CurrentHealth01 >= 100 && r1b1CurrentHealth01 < 1000) {
+												cout << "0" << r1b1CurrentHealth01;
+											} else if(r1b1CurrentHealth01 >= 10 && r1b1CurrentHealth01 < 100) {
+												cout << "00" << r1b1CurrentHealth01;
+											} else if(r1b1CurrentHealth01 >= 1 && r1b1CurrentHealth01 < 10) {
+												cout << "000" << r1b1CurrentHealth01;
+											} else {
+												cout << "0000";
+											}
+
+											cout << " -||";
+
+											if(r1b1Status01) {
+												cout << "- ALIVE -";
+											} else if(!r1b1Status01) {
+												cout << "- DEAD --";
+											}
+
+											cout << "||\n";
+										}
+
+										if(r1b1Active02) {
+											cout << "||";
+
+											if(r1b1Name02.length() == 1) {
+												cout << "----- " << r1b1Name02 << " ------";
+											} else if(r1b1Name02.length() == 2) {
+												cout << "----- " << r1b1Name02 << " -----";
+											} else if(r1b1Name02.length() == 3) {
+												cout << "---- " << r1b1Name02 << " -----";
+											} else if(r1b1Name02.length() == 4) {
+												cout << "---- " << r1b1Name02 << " ----";
+											} else if(r1b1Name02.length() == 5) {
+												cout << "--- " << r1b1Name02 << " ----";
+											} else if(r1b1Name02.length() == 6) {
+												cout << "--- " << r1b1Name02 << " ---";
+											} else if(r1b1Name02.length() == 7) {
+												cout << "-- " << r1b1Name02 << " ---";
+											} else if(r1b1Name02.length() == 8) {
+												cout << "-- " << r1b1Name02 << " --";
+											} else if(r1b1Name02.length() == 9) {
+												cout << "- " << r1b1Name02 << " --";
+											} else if(r1b1Name02.length() == 10) {
+												cout << "- " << r1b1Name02 << " -";
+											}
+
+											cout << "||- ";
+
+											if(r1b1CurrentHealth02 >= 10000) {
+												cout << "9999";
+											} else if(r1b1CurrentHealth02 >= 1000 && r1b1CurrentHealth02 < 10000) {
+												cout << r1b1CurrentHealth02;
+											} else if(r1b1CurrentHealth02 >= 100 && r1b1CurrentHealth02 < 1000) {
+												cout << "0" << r1b1CurrentHealth02;
+											} else if(r1b1CurrentHealth02 >= 10 && r1b1CurrentHealth02 < 100) {
+												cout << "00" << r1b1CurrentHealth02;
+											} else if(r1b1CurrentHealth02 >= 1 && r1b1CurrentHealth02 < 10) {
+												cout << "000" << r1b1CurrentHealth02;
+											} else {
+												cout << "0000";
+											}
+
+											cout << " -||";
+
+											if(r1b1Status02) {
+												cout << "- ALIVE -";
+											} else if(!r1b1Status02) {
+												cout << "- DEAD --";
+											}
+
+											cout << "||\n";
+										}
+
+										if(r1b1Active03) {
+											cout << "||";
+
+											if(r1b1Name03.length() == 1) {
+												cout << "----- " << r1b1Name03 << " ------";
+											} else if(r1b1Name03.length() == 2) {
+												cout << "----- " << r1b1Name03 << " -----";
+											} else if(r1b1Name03.length() == 3) {
+												cout << "---- " << r1b1Name03 << " -----";
+											} else if(r1b1Name03.length() == 4) {
+												cout << "---- " << r1b1Name03 << " ----";
+											} else if(r1b1Name03.length() == 5) {
+												cout << "--- " << r1b1Name03 << " ----";
+											} else if(r1b1Name03.length() == 6) {
+												cout << "--- " << r1b1Name03 << " ---";
+											} else if(r1b1Name03.length() == 7) {
+												cout << "-- " << r1b1Name03 << " ---";
+											} else if(r1b1Name03.length() == 8) {
+												cout << "-- " << r1b1Name03 << " --";
+											} else if(r1b1Name03.length() == 9) {
+												cout << "- " << r1b1Name03 << " --";
+											} else if(r1b1Name03.length() == 10) {
+												cout << "- " << r1b1Name03 << " -";
+											}
+
+											cout << "||- ";
+
+											if(r1b1CurrentHealth03 >= 10000) {
+												cout << "9999";
+											} else if(r1b1CurrentHealth03 >= 1000 && r1b1CurrentHealth03 < 10000) {
+												cout << r1b1CurrentHealth03;
+											} else if(r1b1CurrentHealth03 >= 100 && r1b1CurrentHealth03 < 1000) {
+												cout << "0" << r1b1CurrentHealth03;
+											} else if(r1b1CurrentHealth03 >= 10 && r1b1CurrentHealth03 < 100) {
+												cout << "00" << r1b1CurrentHealth03;
+											} else if(r1b1CurrentHealth03 >= 1 && r1b1CurrentHealth03 < 10) {
+												cout << "000" << r1b1CurrentHealth03;
+											} else {
+												cout << "0000";
+											}
+
+											cout << " -||";
+
+											if(r1b1Status03) {
+												cout << "- ALIVE -";
+											} else if(!r1b1Status03) {
+												cout << "- DEAD --";
+											}
+
+											cout << "||\n";
+										}
+
+										if(r1b1Active04) {
+											cout << "||";
+
+											if(r1b1Name04.length() == 1) {
+												cout << "----- " << r1b1Name04 << " ------";
+											} else if(r1b1Name04.length() == 2) {
+												cout << "----- " << r1b1Name04 << " -----";
+											} else if(r1b1Name04.length() == 3) {
+												cout << "---- " << r1b1Name04 << " -----";
+											} else if(r1b1Name04.length() == 4) {
+												cout << "---- " << r1b1Name04 << " ----";
+											} else if(r1b1Name04.length() == 5) {
+												cout << "--- " << r1b1Name04 << " ----";
+											} else if(r1b1Name04.length() == 6) {
+												cout << "--- " << r1b1Name04 << " ---";
+											} else if(r1b1Name04.length() == 7) {
+												cout << "-- " << r1b1Name04 << " ---";
+											} else if(r1b1Name04.length() == 8) {
+												cout << "-- " << r1b1Name04 << " --";
+											} else if(r1b1Name04.length() == 9) {
+												cout << "- " << r1b1Name04 << " --";
+											} else if(r1b1Name04.length() == 10) {
+												cout << "- " << r1b1Name04 << " -";
+											}
+
+											cout << "||- ";
+
+											if(r1b1CurrentHealth04 >= 10000) {
+												cout << "9999";
+											} else if(r1b1CurrentHealth04 >= 1000 && r1b1CurrentHealth04 < 10000) {
+												cout << r1b1CurrentHealth04;
+											} else if(r1b1CurrentHealth04 >= 100 && r1b1CurrentHealth04 < 1000) {
+												cout << "0" << r1b1CurrentHealth04;
+											} else if(r1b1CurrentHealth04 >= 10 && r1b1CurrentHealth04 < 100) {
+												cout << "00" << r1b1CurrentHealth04;
+											} else if(r1b1CurrentHealth04 >= 1 && r1b1CurrentHealth04 < 10) {
+												cout << "000" << r1b1CurrentHealth04;
+											} else {
+												cout << "0000";
+											}
+
+											cout << " -||";
+
+											if(r1b1Status04) {
+												cout << "- ALIVE -";
+											} else if(!r1b1Status04) {
+												cout << "- DEAD --";
+											}
+
+											cout << "||\n";
+										}
 
 										cout << spacer;
 
@@ -2208,7 +2753,194 @@ int main() {
 
 									playing = true;
 
+									// Update logic
+
+									bool win       = false;
+									int losses     = 0;
+									int kills      = 0;
+									int population = 0;
+									int currency   = 0;
+
+									if(numHeroes <= 0 && r1b1Units > 0) {
+										win = false;
+										conquestDefeats++;
+
+										currency    = (r1b1CurrentHealth00 + r1b1CurrentHealth01 + r1b1CurrentHealth02 + r1b1CurrentHealth03 + r1b1CurrentHealth04) * r1b1Units;
+
+										lostCredits += currency;
+
+										if((currentCredits - currency) <= 0) {
+											currentCredits = 0;
+										} else {
+											currentCredits -= currency;
+										}
+
+									} else if(numHeroes > 0 && r1b1Units <= 0) {
+										win = true;
+
+										r1b1Active = false;
+										r1b2Active = true;
+
+										conquestWins++;
+
+										currency       = (heroCurrentHealth00 + heroCurrentHealth00 + heroCurrentHealth00 + heroCurrentHealth00 + heroCurrentHealth00) * numHeroes;
+
+										wonCredits     += currency;
+										currentCredits += wonCredits;
+									}
+
+									uniform_int_distribution<int> killed(5, (r1b1Units * 10));
+
+									population = killed(randomGenerator);
+
+									populationAlive -= population;
+									populationDead  += population;
+
+									if(!heroStatus00 && heroActive00) {
+										heroCurrentHealth00 = heroTotalHealth00;
+										heroStatus00        = true;
+										numHeroes++;
+									}
+
+									if(!heroStatus01 && heroActive01) {
+										heroTotalHealth01   = 0;
+										heroCurrentHealth01 = heroTotalHealth01;
+										heroAttack01        = 0;
+										heroActive01        = false;
+										losses++;
+									} else {
+										heroCurrentHealth01 = heroTotalHealth01;
+										heroStatus01        = true;
+									}
+
+									if(!heroStatus02 && heroActive02) {
+										heroTotalHealth02   = 0;
+										heroCurrentHealth02 = heroTotalHealth02;
+										heroAttack02        = 0;
+										heroActive02        = false;
+										losses++;
+									} else {
+										heroCurrentHealth02 = heroTotalHealth02;
+										heroStatus02        = true;
+									}
+
+									if(!heroStatus03 && heroActive03) {
+										heroTotalHealth03   = 0;
+										heroCurrentHealth03 = heroTotalHealth;
+										heroAttack03        = 0;
+										heroActive03        = false;
+										losses++;
+									} else {
+										heroCurrentHealth03 = heroTotalHealth03;
+										heroStatus03        = true;
+									}
+
+									if(!heroStatus04 && heroActive04) {
+										heroTotalHealth04   = 0;
+										heroCurrentHealth04 = heroTotalHealth04;
+										heroAttack04        = 0;
+										heroActive04        = false;
+										losses++;
+									} else {
+										heroCurrentHealth04 = heroTotalHealth04;
+										heroStatus04        = true;
+									}
+
+									if(!r1b1Status00 && r1b1Active00) {
+										r1b1TotalHealth00   = 0;
+										r1b1CurrentHealth00 = r1b1TotalHealth00;
+										r1b1Attack00        = 0;
+										r1b1Active          = false;
+										kills++;
+									} else {
+										r1b1CurrentHealth00 = r1b1TotalHealth00;
+										r1b1Status00        = true;
+									}
+
+									if(!r1b1Status01 && r1b1Active01) {
+										r1b1TotalHealth01   = 0;
+										r1b1CurrentHealth01 = r1b1TotalHealth01;
+										r1b1Attack01        = 0;
+										r1b1Active          = false;
+										kills++;
+									} else {
+										r1b1CurrentHealth01 = r1b1TotalHealth01;
+										r1b1Status01        = true;
+									}
+
+									if(!r1b1Status02 && r1b1Active02) {
+										r1b1TotalHealth02   = 0;
+										r1b1CurrentHealth02 = r1b1TotalHealth02;
+										r1b1Attack02        = 0;
+										r1b1Active          = false;
+										kills++;
+									} else {
+										r1b1CurrentHealth02 = r1b1TotalHealth02;
+										r1b1Status02        = true;
+									}
+
+									if(!r1b1Status03 && r1b1Active03) {
+										r1b1TotalHealth03   = 0;
+										r1b1CurrentHealth03 = r1b1TotalHealth03;
+										r1b1Attack03        = 0;
+										r1b1Active          = false;
+										kills++;
+									} else {
+										r1b1CurrentHealth03 = r1b1TotalHealth03;
+										r1b1Status03        = true;
+									}
+
+									if(!r1b1Status04 && r1b1Active04) {
+										r1b1TotalHealth04   = 0;
+										r1b1CurrentHealth04 = r1b1TotalHealth04;
+										r1b1Attack04        = 0;
+										r1b1Active          = false;
+										kills++;
+									} else {
+										r1b1CurrentHealth04 = r1b1TotalHealth04;
+										r1b1Status00        = true;
+									}
+
+									deadHeroes    += losses;
+									enemiesKilled += kills;
+									
 									// Display end results to user
+
+									cout << border;
+									cout << "||-------------------------- Battle Results -----------------------------||\n";
+									cout << border;
+
+									cout << spacer;
+
+									cout << "|| Credits: " << currentCredits << " || Heroes: " << numHeroes << " || Population: " << populationAlive << " || Wins: " << conquestWins << " || Defeats: " << conquestDefeats << "\n";
+
+									cout << spacer;
+
+									if(win) {
+										cout << "||- After a long and exhausting battle you come out victorious. You have\n";
+										cout << "||- successfully destroyed the base and all monsters within it.";
+
+										cout << spacer;
+
+										cout << "||- Credits won:       " << currency << "\n";
+									} else if(!win) {
+										cout << "||- After a long and exhausting battle you succumb to bitter defeat at the\n";
+										cout << "||- hands of the monsters. With all of your recruited heroes dead, and you\n";
+										cout << "||- defeated there is little that stands in the way of the monsters as they\n";
+										cout << "||- lay slaughter to the population.\n";
+
+										cout << spacer;
+
+										cout << "||- Credits lost:      " << currency << "\n";
+									}
+
+									cout << spacer;
+
+									cout << "||- Heroes killed:     " << losses << "\n";
+									cout << "||- Enemies killed:    " << kills << "\n";
+									cout << "||- Population killed: " << population << "\n";
+
+									cout << spacer;
 
 								}
 							} else if(menuSelection == 2) {
@@ -2850,73 +3582,55 @@ int main() {
 						}
 					}
 
-					if(menuSelection == 0) {
-						if(heroTotalHealth00 < 1000) {
-							heroTotalHealth00 += 50;
-							currentCredits -= 100;
-							spentCredits += 100;
-						}
-					} else if(menuSelection == 1) {
-						if(heroAttack00 < 200) {
-							heroAttack00 += 10;
-							currentCredits -= 100;
-							spentCredits += 100;
-						}
-					} else if(menuSelection == 2 && heroActive01) {
-						if(heroTotalHealth01 < 1000) {
-							heroTotalHealth01 += 50;
-							currentCredits -= 100;
-							spentCredits += 100;
-						}
-					} else if(menuSelection == 3 && heroActive01) {
-						if(heroAttack01 < 200) {
-							heroAttack01 += 10;
-							currentCredits -= 100;
-							spentCredits += 100;
-						}
-					} else if(menuSelection == 4 && heroActive02) {
-						if(heroTotalHealth02 < 1000) {
-							heroTotalHealth02 += 50;
-							currentCredits -= 100;
-							spentCredits += 100;
-						}
-					} else if(menuSelection == 5 && heroActive02) {
-						if(heroAttack02 < 200) {
-							heroAttack02 += 10;
-							currentCredits -= 100;
-							spentCredits += 100;
-						}
-					} else if(menuSelection == 6 && heroActive03) {
-						if(heroTotalHealth03 < 1000) {
-							heroTotalHealth03 += 50;
-							currentCredits -= 100;
-							spentCredits += 100;
-						}
-					} else if(menuSelection == 7 && heroActive03) {
-						if(heroAttack03 < 200) {
-							heroAttack03 += 10;
-							currentCredits -= 100;
-							spentCredits += 100;
-						}
-					} else if(menuSelection == 8 && heroActive04) {
-						if(heroTotalHealth04 < 1000) {
-							heroTotalHealth04 += 50;
-							currentCredits -= 100;
-							spentCredits += 100;
-						}
-					} else if(menuSelection == 9 && heroActive04) {
-						if(heroAttack04 < 200) {
-							heroAttack04 += 10;
-							currentCredits -= 100;
-							spentCredits += 100;
-						}
+					if(menuSelection == 0 && heroTotalHealth00 < 1000) {
+						heroTotalHealth00   += 50;
+				        heroCurrentHealth00 = heroTotalHealth00;
+						currentCredits      -= 100;
+						spentCredits        += 100;
+					} else if(menuSelection == 1 && heroAttack00 < 200) {
+						heroAttack00   += 10;
+						currentCredits -= 100;
+						spentCredits   += 100;
+					} else if(menuSelection == 2 && heroActive01 && heroTotalHealth01 < 1000) {
+						heroTotalHealth01   += 50;
+						heroCurrentHealth01 = heroTotalHealth01;
+					    currentCredits      -= 100;
+						spentCredits        += 100;
+					} else if(menuSelection == 3 && heroActive01 && heroAttack01 < 200) {
+						heroAttack01   += 10;
+						currentCredits -= 100;
+						spentCredits   += 100;
+					} else if(menuSelection == 4 && heroActive02 && heroTotalHealth02 < 1000) {
+						heroTotalHealth02   += 50;
+						heroCurrentHealth02 = heroTotalHealth02;
+						currentCredits      -= 100;
+						spentCredits        += 100;
+					} else if(menuSelection == 5 && heroActive02 && heroAttack02 < 200) {
+						heroAttack02   += 10;
+						currentCredits -= 100;
+						spentCredits   += 100;
+					} else if(menuSelection == 6 && heroActive03 && heroTotalHealth03 < 1000) {
+						heroTotalHealth03   += 50;
+						heroCurrentHealth03 = heroTotalHealth03;
+						currentCredits      -= 100;
+						spentCredits        += 100;
+					} else if(menuSelection == 7 && heroActive03 && heroAttack03 < 200) {
+						heroAttack03   += 10;
+						currentCredits -= 100;
+						spentCredits   += 100;
+					} else if(menuSelection == 8 && heroActive04 && heroTotalHealth04 < 1000) {
+						heroTotalHealth04   += 50;
+						heroCurrentHealth04 = heroTotalHealth04;
+						currentCredits      -= 100;
+						spentCredits        += 100;
+					} else if(menuSelection == 9 && heroActive04 && heroAttack04 < 200) {
+						heroAttack04   += 10;
+						currentCredits -= 100;
+						spentCredits   += 100;
 					} else if(menuSelection == numHeroes * 2) {
 						playing = false;
-						cout << playing;
 					}
-					cout << playing;
 				}
-				cout << playing;
 			}
 			playing = true;
 		} else if(menuSelection == 3) {
@@ -3073,24 +3787,28 @@ int main() {
 							}
 						}
 
-						if(numHeroes == 1) {
+						if(!heroActive01) {
 							heroName01 = menuString;
 							heroTotalHealth01 = 50;
+							heroCurrentHealth01 = heroTotalHealth01;
 							heroAttack01 = 10;
 							heroActive01 = true;
-						} else if(numHeroes == 2) {
+						} else if(!heroActive02) {
 							heroName02 = menuString;
 							heroTotalHealth02 = 50;
+							heroCurrentHealth02 = heroTotalHealth02;
 							heroAttack02 = 10;
 							heroActive02 = true;
-						} else if(numHeroes == 3) {
+						} else if(!heroActive03) {
 							heroName03 = menuString;
 							heroTotalHealth03 = 50;
+							heroCurrentHealth03 = heroTotalHealth03;
 							heroAttack03 = 10;
 							heroActive03 = true;
-						} else if(numHeroes == 4) {
+						} else if(!heroActive04) {
 							heroName04 = menuString;
 							heroTotalHealth04 = 50;
+							heroCurrentHealth04 = heroTotalHealth04;
 							heroAttack04 = 10;
 							heroActive04 = true;
 						}
@@ -3098,7 +3816,7 @@ int main() {
 						recruited = true;
 
 						currentCredits = currentCredits - (500 * numHeroes);
-						spentCredits = spentCredits + (500 * numHeroes);
+						spentCredits   = spentCredits + (500 * numHeroes);
 
 						numHeroes++;
 					} else if(menuSelection == 2) {
@@ -3126,6 +3844,7 @@ int main() {
 			cout << spacer;
 
 			cout << "|| Total credits won:                         " << wonCredits << "\n";
+			cout << "|| Total credits lost:                        " << lostCredits << "\n";
 			cout << "|| Total credits spent:                       " << spentCredits << "\n";
 			cout << "|| Number of heroes:                          " << numHeroes << "\n";
 			cout << "|| Number of heroes that have died:           " << deadHeroes << "\n";
@@ -3136,7 +3855,6 @@ int main() {
 			cout << "|| Number of friendly battles won:            " << friendlyWins << "\n";
 			cout << "|| Number of friendly battles lost:           " << friendlyDefeats << "\n";
 			cout << "|| Number of regions destroyed:               " << regionsDestroyed << "\n";
-			cout << "|| Number of regions still active:            " << regionsActive << "\n";
 
 			cout << spacer;
 
