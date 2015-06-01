@@ -62,43 +62,50 @@ int main() {
 
 	// These variables will be used during battles to hold total health points
 
-	int    heroHealth      = 0;
-	int    monsterHealth   = 0;
+	int    heroTotalHealth         = 0;
+	int    heroCurrentHealth       = 0;
+	int    monsterTotalHealth      = 0;
+	int    monsterCurrentHealth    = 0;
 
 	// Variables for Hero 00
 
-	string heroName00   = "Jelly Fish";
-	int    heroHealth00 = 0;
-	int    heroAttack00 = 0;
-	bool   heroActive00 = false;
+	string heroName00          = "Hero 01";
+	int    heroTotalHealth00   = 0;
+	int    heroCurrentHealth00 = 0;
+	int    heroAttack00        = 0;
+	bool   heroActive00        = false;
 
 	// Variables for Hero 01
 
-	string heroName01   = "Hero 02";
-	int    heroHealth01 = 0;
-	int    heroAttack01 = 0;
-	bool   heroActive01 = false;
+	string heroName01          = "Hero 02";
+	int    heroTotalHealth01   = 0;
+	int    heroCurrentHealth01 = 0;
+	int    heroAttack01        = 0;
+	bool   heroActive01        = false;
 
 	// Variables for Hero 02
 
-	string heroName02   = "Hero 03";
-	int    heroHealth02 = 0;
-	int    heroAttack02 = 0;
-	bool   heroActive02 = false;
+	string heroName02          = "Hero 03";
+	int    heroTotalHealth02   = 0;
+	int    heroCurrentHealth02 = 0;
+	int    heroAttack02        = 0;
+	bool   heroActive02        = false;
 
 	// Variables for Hero 03
 
-	string heroName03   = "Hero 04";
-	int    heroHealth03 = 0;
-	int    heroAttack03 = 0;
-	bool   heroActive03 = false;
+	string heroName03          = "Hero 04";
+	int    heroTotalHealth03   = 0;
+	int    heroCurrentHealth03 = 0;
+	int    heroAttack03        = 0;
+	bool   heroActive03        = false;
 
 	// Variables for Hero 04
 
-	string heroName04   = "Hero 05";
-	int    heroHealth04 = 0;
-	int    heroAttack04 = 0;
-	bool   heroActive04 = false;
+	string heroName04          = "Hero 05";
+	int    heroTotalHealth04   = 0;
+	int    heroCurrentHealth04 = 0;
+	int    heroAttack04        = 0;
+	bool   heroActive04        = false;
 
 	// Variables for Region 1
 
@@ -107,82 +114,97 @@ int main() {
 	
 	// Base 1
 
-	int    r1b1Units    = 0;
-	bool   r1b1Counted  = false;
-	bool   r1b1Active   = true;
-	bool   r1b1Defeated = false;
-	string r1b1Name00   = "Monster 1";
-	int    r1b1Health00 = 50;
-	int    r1b1Attack00 = 10;
-	bool   r1b1Active00 = true;
-	string r1b1Name01   = "Monster 2";
-	int    r1b1Health01 = 50;
-	int    r1b1Attack01 = 10;
-	bool   r1b1Active01 = true;
-	string r1b1Name02   = "Monster 3";
-	int    r1b1Health02 = 50;
-	int    r1b1Attack02 = 10;
-	bool   r1b1Active02 = true;
-	string r1b1Name03   = "Monster 4";
-	int    r1b1Health03 = 50;
-	int    r1b1Attack03 = 10;
-	bool   r1b1Active03 = true;
-	string r1b1Name04   = "Monster 5";
-	int    r1b1Health04 = 50;
-	int    r1b1Attack04 = 10;
-	bool   r1b1Active04 = true;
+	int    r1b1Units           = 0;
+	bool   r1b1Counted         = false;
+	bool   r1b1Active          = true;
+	bool   r1b1Defeated        = false;
+	string r1b1Name00          = "Monster 1";
+	int    r1b1TotalHealth00   = 50;
+	int    r1b1CurrentHealth00 = r1b1TotalHealth00;
+	int    r1b1Attack00        = 10;
+	bool   r1b1Active00        = true;
+	string r1b1Name01          = "Monster 2";
+	int    r1b1TotalHealth01   = 50;
+	int    r1b1CurrentHealth01 = r1b1TotalHealth01;
+	int    r1b1Attack01        = 10;
+	bool   r1b1Active01        = true;
+	string r1b1Name02          = "Monster 3";
+	int    r1b1TotalHealth02   = 50;
+	int    r1b1CurrentHealth02 = r1b1TotalHealth02;
+	int    r1b1Attack02        = 10;
+	bool   r1b1Active02        = true;
+	string r1b1Name03          = "Monster 4";
+	int    r1b1TotalHealth03   = 50;
+	int    r1b1CurrentHealth03 = r1b1TotalHealth03;
+	int    r1b1Attack03        = 10;
+	bool   r1b1Active03        = true;
+	string r1b1Name04          = "Monster 5";
+	int    r1b1TotalHealth04   = 50;
+	int    r1b1CurrentHealth04 = r1b1TotalHealth04;
+	int    r1b1Attack04        = 10;
+	bool   r1b1Active04        = true;
 
 	// Base 2
 
-	int    r1b2Units    = 0;
-	bool   r1b2Counted  = false;
-	bool   r1b2Active   = false;
+	int    r1b2Units = 0;
+	bool   r1b2Counted = false;
+	bool   r1b2Active = true;
 	bool   r1b2Defeated = false;
-	string r1b2Name00   = "";
-	int    r1b2Health00 = 50;
+	string r1b2Name00 = "Monster 1";
+	int    r1b2TotalHealth00 = 50;
+	int    r1b2CurrentHealth00 = r1b1TotalHealth00;
 	int    r1b2Attack00 = 10;
 	bool   r1b2Active00 = true;
-	string r1b2Name01   = "";
-	int    r1b2Health01 = 50;
+	string r1b2Name01 = "Monster 2";
+	int    r1b2TotalHealth01 = 50;
+	int    r1b2CurrentHealth01 = r1b1TotalHealth01;
 	int    r1b2Attack01 = 10;
 	bool   r1b2Active01 = true;
-	string r1b2Name02   = "";
-	int    r1b2Health02 = 50;
+	string r1b2Name02 = "Monster 3";
+	int    r1b2TotalHealth02 = 50;
+	int    r1b2CurrentHealth02 = r1b1TotalHealth02;
 	int    r1b2Attack02 = 10;
 	bool   r1b2Active02 = true;
-	string r1b2Name03   = "";
-	int    r1b2Health03 = 50;
+	string r1b2Name03 = "Monster 4";
+	int    r1b2TotalHealth03 = 50;
+	int    r1b2CurrentHealth03 = r1b1TotalHealth03;
 	int    r1b2Attack03 = 10;
 	bool   r1b2Active03 = true;
-	string r1b2Name04   = "";
-	int    r1b2Health04 = 50;
+	string r1b2Name04 = "Monster 5";
+	int    r1b2TotalHealth04 = 50;
+	int    r1b2CurrentHealth04 = r1b1TotalHealth04;
 	int    r1b2Attack04 = 10;
 	bool   r1b2Active04 = true;
 
 	// Base 3
 
-	int    r1b3Units    = 0;
-	bool   r1b3Counted  = false;
-	bool   r1b3Active   = false;
+	int    r1b3Units = 0;
+	bool   r1b3Counted = false;
+	bool   r1b3Active = true;
 	bool   r1b3Defeated = false;
-	string r1b3Name00   = "";
-	int    r1b3Health00 = 50;
+	string r1b3Name00 = "Monster 1";
+	int    r1b3TotalHealth00 = 50;
+	int    r1b3CurrentHealth00 = r1b1TotalHealth00;
 	int    r1b3Attack00 = 10;
 	bool   r1b3Active00 = true;
-	string r1b3Name01   = "";
-	int    r1b3Health01 = 50;
+	string r1b3Name01 = "Monster 2";
+	int    r1b3TotalHealth01 = 50;
+	int    r1b3CurrentHealth01 = r1b1TotalHealth01;
 	int    r1b3Attack01 = 10;
 	bool   r1b3Active01 = true;
-	string r1b3Name02   = "";
-	int    r1b3Health02 = 50;
+	string r1b3Name02 = "Monster 3";
+	int    r1b3TotalHealth02 = 50;
+	int    r1b3CurrentHealth02 = r1b1TotalHealth02;
 	int    r1b3Attack02 = 10;
 	bool   r1b3Active02 = true;
-	string r1b3Name03   = "";
-	int    r1b3Health03 = 50;
+	string r1b3Name03 = "Monster 4";
+	int    r1b3TotalHealth03 = 50;
+	int    r1b3CurrentHealth03 = r1b1TotalHealth03;
 	int    r1b3Attack03 = 10;
 	bool   r1b3Active03 = true;
-	string r1b3Name04   = "";
-	int    r1b3Health04 = 50;
+	string r1b3Name04 = "Monster 5";
+	int    r1b3TotalHealth04 = 50;
+	int    r1b3CurrentHealth04 = r1b1TotalHealth04;
 	int    r1b3Attack04 = 10;
 	bool   r1b3Active04 = true;
 
@@ -404,7 +426,7 @@ int main() {
 			}
 
 			heroName00 = menuString;
-			heroHealth00 = 50;
+			heroTotalHealth00 = 50;
 			heroAttack00 = 10;
 			heroActive00 = true;
 			numHeroes = 1;
@@ -758,7 +780,7 @@ int main() {
 
 										// Just some calculations
 
-										hashCount  = heroHealth00 / 50;
+										hashCount  = heroTotalHealth00 / 50;
 										equalCount = 20 - hashCount;
 
 										// Create bar
@@ -772,12 +794,12 @@ int main() {
 
 										cout << " -||- ";
 
-										if(heroHealth00 < 100 && heroHealth00 >= 10) {
-											cout << "00" << heroHealth00;
-										} else if(heroHealth00 < 1000 && heroHealth00 >= 100) {
-											cout << "0" << heroHealth00;
+										if(heroTotalHealth00 < 100 && heroTotalHealth00 >= 10) {
+											cout << "00" << heroTotalHealth00;
+										} else if(heroTotalHealth00 < 1000 && heroTotalHealth00 >= 100) {
+											cout << "0" << heroTotalHealth00;
 										} else {
-											cout << heroHealth00;
+											cout << heroTotalHealth00;
 										}
 
 										cout << " -||\n";
@@ -864,7 +886,7 @@ int main() {
 
 										// Just some calculations
 
-										hashCount  = heroHealth01 / 50;
+										hashCount  = heroTotalHealth01 / 50;
 										equalCount = 20 - hashCount;
 
 										// Create bar
@@ -878,12 +900,12 @@ int main() {
 
 										cout << " -||- ";
 
-										if(heroHealth01 < 100 && heroHealth01 >= 10) {
-											cout << "00" << heroHealth01;
-										} else if(heroHealth01 < 1000 && heroHealth01 >= 100) {
-											cout << "0" << heroHealth01;
+										if(heroTotalHealth01 < 100 && heroTotalHealth01 >= 10) {
+											cout << "00" << heroTotalHealth01;
+										} else if(heroTotalHealth01 < 1000 && heroTotalHealth01 >= 100) {
+											cout << "0" << heroTotalHealth01;
 										} else {
-											cout << heroHealth01;
+											cout << heroTotalHealth01;
 										}
 
 										cout << " -||\n";
@@ -970,7 +992,7 @@ int main() {
 
 										// Just some calculations
 
-										hashCount  = heroHealth02 / 50;
+										hashCount  = heroTotalHealth02 / 50;
 										equalCount = 20 - hashCount;
 
 										// Create bar
@@ -984,12 +1006,12 @@ int main() {
 
 										cout << " -||- ";
 
-										if(heroHealth02 < 100 && heroHealth02 >= 10) {
-											cout << "00" << heroHealth02;
-										} else if(heroHealth02 < 1000 && heroHealth02 >= 100) {
-											cout << "0" << heroHealth02;
+										if(heroTotalHealth02 < 100 && heroTotalHealth02 >= 10) {
+											cout << "00" << heroTotalHealth02;
+										} else if(heroTotalHealth02 < 1000 && heroTotalHealth02 >= 100) {
+											cout << "0" << heroTotalHealth02;
 										} else {
-											cout << heroHealth02;
+											cout << heroTotalHealth02;
 										}
 
 										cout << " -||\n";
@@ -1076,7 +1098,7 @@ int main() {
 
 										// Just some calculations
 
-										hashCount  = heroHealth03 / 50;
+										hashCount  = heroTotalHealth03 / 50;
 										equalCount = 20 - hashCount;
 
 										// Create bar
@@ -1090,12 +1112,12 @@ int main() {
 
 										cout << " -||- ";
 
-										if(heroHealth03 < 100 && heroHealth03 >= 10) {
-											cout << "00" << heroHealth03;
-										} else if(heroHealth03 < 1000 && heroHealth03 >= 100) {
-											cout << "0" << heroHealth03;
+										if(heroTotalHealth03 < 100 && heroTotalHealth03 >= 10) {
+											cout << "00" << heroTotalHealth03;
+										} else if(heroTotalHealth03 < 1000 && heroTotalHealth03 >= 100) {
+											cout << "0" << heroTotalHealth03;
 										} else {
-											cout << heroHealth03;
+											cout << heroTotalHealth03;
 										}
 
 										cout << " -||\n";
@@ -1182,7 +1204,7 @@ int main() {
 
 										// Just some calculations
 
-										hashCount  = heroHealth04 / 50;
+										hashCount  = heroTotalHealth04 / 50;
 										equalCount = 20 - hashCount;
 
 										// Create bar
@@ -1196,12 +1218,12 @@ int main() {
 
 										cout << " -||- ";
 
-										if(heroHealth04 < 100 && heroHealth04 >= 10) {
-											cout << "00" << heroHealth04;
-										} else if(heroHealth04 < 1000 && heroHealth04 >= 100) {
-											cout << "0" << heroHealth04;
+										if(heroTotalHealth04 < 100 && heroTotalHealth04 >= 10) {
+											cout << "00" << heroTotalHealth04;
+										} else if(heroTotalHealth04 < 1000 && heroTotalHealth04 >= 100) {
+											cout << "0" << heroTotalHealth04;
 										} else {
-											cout << heroHealth04;
+											cout << heroTotalHealth04;
 										}
 
 										cout << " -||\n";
@@ -1313,7 +1335,7 @@ int main() {
 
 										// Just some calculations
 
-										hashCount  = r1b1Health00 / 50;
+										hashCount  = r1b1TotalHealth00 / 50;
 										equalCount = 20 - hashCount;
 
 										// Create bar
@@ -1327,12 +1349,12 @@ int main() {
 
 										cout << " -||- ";
 
-										if(r1b1Health00 < 100 && r1b1Health00 >= 10) {
-											cout << "00" << heroHealth00;
-										} else if(r1b1Health00 < 1000 && r1b1Health00 >= 100) {
-											cout << "0" << heroHealth00;
+										if(r1b1TotalHealth00 < 100 && r1b1TotalHealth00 >= 10) {
+											cout << "00" << heroTotalHealth00;
+										} else if(r1b1TotalHealth00 < 1000 && r1b1TotalHealth00 >= 100) {
+											cout << "0" << heroTotalHealth00;
 										} else {
-											cout << r1b1Health00;
+											cout << r1b1TotalHealth00;
 										}
 
 										cout << " -||\n";
@@ -1419,7 +1441,7 @@ int main() {
 
 										// Just some calculations
 
-										hashCount  = r1b1Health01 / 50;
+										hashCount  = r1b1TotalHealth01 / 50;
 										equalCount = 20 - hashCount;
 
 										// Create bar
@@ -1433,12 +1455,12 @@ int main() {
 
 										cout << " -||- ";
 
-										if(r1b1Health01 < 100 && r1b1Health01 >= 10) {
-											cout << "00" << r1b1Health01;
-										} else if(r1b1Health01 < 1000 && r1b1Health01 >= 100) {
-											cout << "0" << r1b1Health01;
+										if(r1b1TotalHealth01 < 100 && r1b1TotalHealth01 >= 10) {
+											cout << "00" << r1b1TotalHealth01;
+										} else if(r1b1TotalHealth01 < 1000 && r1b1TotalHealth01 >= 100) {
+											cout << "0" << r1b1TotalHealth01;
 										} else {
-											cout << r1b1Health01;
+											cout << r1b1TotalHealth01;
 										}
 
 										cout << " -||\n";
@@ -1525,7 +1547,7 @@ int main() {
 
 										// Just some calculations
 
-										hashCount  = r1b1Health02 / 50;
+										hashCount  = r1b1TotalHealth02 / 50;
 										equalCount = 20 - hashCount;
 
 										// Create bar
@@ -1539,12 +1561,12 @@ int main() {
 
 										cout << " -||- ";
 
-										if(r1b1Health02 < 100 && r1b1Health02 >= 10) {
-											cout << "00" << r1b1Health02;
-										} else if(r1b1Health02 < 1000 && r1b1Health02 >= 100) {
-											cout << "0" << r1b1Health02;
+										if(r1b1TotalHealth02 < 100 && r1b1TotalHealth02 >= 10) {
+											cout << "00" << r1b1TotalHealth02;
+										} else if(r1b1TotalHealth02 < 1000 && r1b1TotalHealth02 >= 100) {
+											cout << "0" << r1b1TotalHealth02;
 										} else {
-											cout << r1b1Health02;
+											cout << r1b1TotalHealth02;
 										}
 
 										cout << " -||\n";
@@ -1631,7 +1653,7 @@ int main() {
 
 										// Just some calculations
 
-										hashCount  = r1b1Health03 / 50;
+										hashCount  = r1b1TotalHealth03 / 50;
 										equalCount = 20 - hashCount;
 
 										// Create bar
@@ -1645,12 +1667,12 @@ int main() {
 
 										cout << " -||- ";
 
-										if(r1b1Health03 < 100 && r1b1Health03 >= 10) {
-											cout << "00" << r1b1Health03;
-										} else if(r1b1Health03 < 1000 && r1b1Health03 >= 100) {
-											cout << "0" << r1b1Health03;
+										if(r1b1TotalHealth03 < 100 && r1b1TotalHealth03 >= 10) {
+											cout << "00" << r1b1TotalHealth03;
+										} else if(r1b1TotalHealth03 < 1000 && r1b1TotalHealth03 >= 100) {
+											cout << "0" << r1b1TotalHealth03;
 										} else {
-											cout << r1b1Health03;
+											cout << r1b1TotalHealth03;
 										}
 
 										cout << " -||\n";
@@ -1737,7 +1759,7 @@ int main() {
 
 										// Just some calculations
 
-										hashCount  = r1b1Health04 / 50;
+										hashCount  = r1b1TotalHealth04 / 50;
 										equalCount = 20 - hashCount;
 
 										// Create bar
@@ -1751,12 +1773,12 @@ int main() {
 
 										cout << " -||- ";
 
-										if(r1b1Health04 < 100 && r1b1Health04 >= 10) {
-											cout << "00" << r1b1Health04;
-										} else if(r1b1Health04 < 1000 && r1b1Health04 >= 100) {
-											cout << "0" << r1b1Health04;
+										if(r1b1TotalHealth04 < 100 && r1b1TotalHealth04 >= 10) {
+											cout << "00" << r1b1TotalHealth04;
+										} else if(r1b1TotalHealth04 < 1000 && r1b1TotalHealth04 >= 100) {
+											cout << "0" << r1b1TotalHealth04;
 										} else {
-											cout << r1b1Health04;
+											cout << r1b1TotalHealth04;
 										}
 
 										cout << " -||\n";
@@ -1853,19 +1875,21 @@ int main() {
 
 									// Heroes
 
-									heroHealth += heroHealth00;
-									heroHealth += heroHealth01;
-									heroHealth += heroHealth02;
-									heroHealth += heroHealth03;
-									heroHealth += heroHealth04;
+									heroTotalHealth += heroTotalHealth00;
+									heroTotalHealth += heroTotalHealth01;
+									heroTotalHealth += heroTotalHealth02;
+									heroTotalHealth += heroTotalHealth03;
+									heroTotalHealth += heroTotalHealth04;
+									heroCurrentHealth = heroTotalHealth;
 
 									// Monsters
 
-									monsterHealth += r1b1Health00;
-									monsterHealth += r1b1Health01;
-									monsterHealth += r1b1Health02;
-									monsterHealth += r1b1Health03;
-									monsterHealth += r1b1Health04;
+									monsterTotalHealth += r1b1TotalHealth00;
+									monsterTotalHealth += r1b1TotalHealth01;
+									monsterTotalHealth += r1b1TotalHealth02;
+									monsterTotalHealth += r1b1TotalHealth03;
+									monsterTotalHealth += r1b1TotalHealth04;
+									monsterCurrentHealth = monsterTotalHealth;
 
 									// Loop battle until we have a winner
 
@@ -1878,7 +1902,7 @@ int main() {
 
 										// Store names of two units that will be attacking
 
-										string heroName      = "";
+										string heroName = "";
 										int    heroAttack    = 0;
 										string monsterName   = "";
 										int    monsterAttack = 0;
@@ -1958,7 +1982,7 @@ int main() {
 
 										if(variable > 0 && variable <= numHeroes) {
 											attackingSide = 0;
-										} else if(variable > numHeroes <= (numHeroes + r1b1Units)) {
+										} else if(variable > numHeroes || variable <= (numHeroes + r1b1Units)) {
 											attackingSide = 1;
 										}
 
@@ -1966,51 +1990,51 @@ int main() {
 											// Heroes attacking
 
 											if(monsterUnit == 1) {
-												r1b1Health00  -= heroAttack;
-												monsterHealth -= heroAttack;
+												r1b1TotalHealth00  -= heroAttack;
+												monsterTotalHealth -= heroAttack;
 
-												if(r1b1Health00 <= 0) {
-													r1b1Health00 = 0;
+												if(r1b1TotalHealth00 <= 0) {
+													r1b1TotalHealth00 = 0;
 													r1b1Attack01 = 0;
 													r1b1Active00 = false;
 													r1b1Units--;
 												}
 											} else if(monsterUnit == 2) {
-												r1b1Health01  -= heroAttack;
-												monsterHealth -= heroAttack;
+												r1b1TotalHealth01  -= heroAttack;
+												monsterTotalHealth -= heroAttack;
 
-												if(r1b1Health01 <= 0) {
-													r1b1Health01 = 0;
+												if(r1b1TotalHealth01 <= 0) {
+													r1b1TotalHealth01 = 0;
 													r1b1Attack01 = 0;
 													r1b1Active01 = false;
 													r1b1Units--;
 												}
 											} else if(monsterUnit == 3) {
-												r1b1Health02  -= heroAttack;
-												monsterHealth -= heroAttack;
+												r1b1TotalHealth02  -= heroAttack;
+												monsterTotalHealth -= heroAttack;
 
-												if(r1b1Health02 <= 0) {
-													r1b1Health02 = 0;
+												if(r1b1TotalHealth02 <= 0) {
+													r1b1TotalHealth02 = 0;
 													r1b1Attack02 = 0;
 													r1b1Active02 = false;
 													r1b1Units--;
 												}
 											} else if(monsterUnit == 4) {
-												r1b1Health03  -= heroAttack;
-												monsterHealth -= heroAttack;
+												r1b1TotalHealth03  -= heroAttack;
+												monsterTotalHealth -= heroAttack;
 
-												if(r1b1Health03 <= 0) {
-													r1b1Health03 = 0;
+												if(r1b1TotalHealth03 <= 0) {
+													r1b1TotalHealth03 = 0;
 													r1b1Attack03 = 0;
 													r1b1Active03 = false;
 													r1b1Units--;
 												}
 											} else if(monsterUnit == 5) {
-												r1b1Health04  -= heroAttack;
-												monsterHealth -= heroAttack;
+												r1b1TotalHealth04  -= heroAttack;
+												monsterTotalHealth -= heroAttack;
 
-												if(r1b1Health04 <= 0) {
-													r1b1Health04 = 0;
+												if(r1b1TotalHealth04 <= 0) {
+													r1b1TotalHealth04 = 0;
 													r1b1Attack04 = 0;
 													r1b1Active04 = false;
 													r1b1Units--;
@@ -2020,49 +2044,49 @@ int main() {
 											// Monsters attacking
 
 											if(heroUnit == 1) {
-												heroHealth00 -= monsterAttack;
-												heroHealth   -= monsterAttack;
+												heroTotalHealth00 -= monsterAttack;
+												heroTotalHealth   -= monsterAttack;
 
-												if(heroHealth00 <= 0) {
+												if(heroTotalHealth00 <= 0) {
 													heroActive00 = false;
 													numHeroes--;
 												}
 											} else if(heroUnit == 2) {
-												heroHealth01 -= monsterAttack;
-												heroHealth   -= monsterAttack;
+												heroTotalHealth01 -= monsterAttack;
+												heroTotalHealth   -= monsterAttack;
 
-												if(heroHealth01 <= 0) {
-													heroHealth01 = 0;
+												if(heroTotalHealth01 <= 0) {
+													heroTotalHealth01 = 0;
 													heroAttack01 = 0;
 													heroActive01 = false;
 													heroUnit--;
 												}
 											} else if(heroUnit == 2) {
-												heroHealth01 -= monsterAttack;
-												heroHealth   -= monsterAttack;
+												heroTotalHealth01 -= monsterAttack;
+												heroTotalHealth   -= monsterAttack;
 
-												if(heroHealth02 <= 0) {
-													heroHealth02 = 0;
+												if(heroTotalHealth02 <= 0) {
+													heroTotalHealth02 = 0;
 													heroAttack02 = 0;
 													heroActive02 = false;
 													heroUnit--;
 												}
 											} else if(heroUnit == 2) {
-												heroHealth01 -= monsterAttack;
-												heroHealth   -= monsterAttack;
+												heroTotalHealth01 -= monsterAttack;
+												heroTotalHealth   -= monsterAttack;
 
-												if(heroHealth03 <= 0) {
-													heroHealth03 = 0;
+												if(heroTotalHealth03 <= 0) {
+													heroTotalHealth03 = 0;
 													heroAttack03 = 0;
 													heroActive03 = false;
 													heroUnit--;
 												}
 											} else if(heroUnit == 2) {
-												heroHealth01 -= monsterAttack;
-												heroHealth   -= monsterAttack;
+												heroTotalHealth01 -= monsterAttack;
+												heroTotalHealth   -= monsterAttack;
 
-												if(heroHealth04 <= 0) {
-													heroHealth04 = 0;
+												if(heroTotalHealth04 <= 0) {
+													heroTotalHealth04 = 0;
 													heroAttack04 = 0;
 													heroActive04 = false;
 													heroUnit--;
@@ -2072,17 +2096,73 @@ int main() {
 
 										// Display battle results to user
 
+										float hashCount = 0;
+										float equalCount = 0;
+
 										cout << "||-------------------------------- HEALTH -------------------------------||\n";
 										cout << "||-----------------------------------------------------------------------||\n";
-										cout << "||-- Heroes --||- ########################################### -||- 0000 -||\n";
+										cout << "||-- Heroes --||- ";
+										
+										hashCount = heroTotalHealth / 50.00f;
+										equalCount = 43.00f - hashCount;
+
+										// Create bar
+
+										for(int i = 0; i < hashCount; i++) {
+											cout << "#";
+										}
+										for(int i = 0; i < equalCount; i++) {
+											cout << "=";
+										}
+										
+										cout << " -||- ";
+										
+										if(heroTotalHealth >= 10000) {
+											cout << "9999";
+										} else if(heroTotalHealth >= 1000 && heroTotalHealth < 10000) {
+											cout << heroTotalHealth;
+										} else if(heroTotalHealth >= 100 && heroTotalHealth < 1000) {
+											cout << "0" << heroTotalHealth;
+										} else if(heroTotalHealth >= 10 && heroTotalHealth < 100) {
+											cout << "00" << heroTotalHealth;
+										} else if(heroTotalHealth >= 1 && heroTotalHealth < 10) {
+											cout << "000" << heroTotalHealth;
+										} else {
+											cout << "0000";
+										}
+											
+										cout << " -||\n";
+
 										cout << "||-----------------------------------------------------------------------||\n";
-										cout << "||- Monsters -||- ########################################### -||- 0000 -||\n";
+										cout << "||- Monsters -||- ########################################### -||- ";
+										
+										if(monsterTotalHealth >= 10000) {
+											cout << "9999";
+										} else if(monsterTotalHealth >= 1000 && monsterTotalHealth < 10000) {
+											cout << monsterTotalHealth;
+										} else if(monsterTotalHealth >= 100 && monsterTotalHealth < 1000) {
+											cout << "0" << monsterTotalHealth;
+										} else if(monsterTotalHealth >= 10 && monsterTotalHealth < 100) {
+											cout << "00" << monsterTotalHealth;
+										} else if(monsterTotalHealth >= 1 && monsterTotalHealth < 10) {
+											cout << "000" << monsterTotalHealth;
+										} else {
+											cout << "0000";
+										}
+
+										cout << " -||\n";
 										cout << "||-----------------------------------------------------------------------||\n";
 
 										cout << spacer;
 
-										cout << "||- " << heroName << endl;
-										cout << "||- " << monsterName << endl;
+										cout << spacer;
+
+
+										if(attackingSide == 0) {
+											cout << "||- " << heroName << " attacked " << monsterName << " for " << heroAttack << " points.\n";
+										} else if(attackingSide == 1) {
+											cout << "||- " << monsterName << " attacked " << heroName << " for " << monsterAttack << " points.\n";
+										}
 
 										cout << spacer;
 
@@ -2260,7 +2340,7 @@ int main() {
 							cout << "||- Health -||- ";
 
 							// Just some calculations
-							hashCount = heroHealth00 / 50;
+							hashCount = heroTotalHealth00 / 50;
 							equalCount = 20 - hashCount;
 
 							// Create bar
@@ -2273,12 +2353,12 @@ int main() {
 
 							cout << " -||- ";
 
-							if(heroHealth00 < 100 && heroHealth00 >= 10) {
-								cout << "00" << heroHealth00;
-							} else if(heroHealth00 < 1000 && heroHealth00 >= 100) {
-								cout << "0" << heroHealth00;
+							if(heroTotalHealth00 < 100 && heroTotalHealth00 >= 10) {
+								cout << "00" << heroTotalHealth00;
+							} else if(heroTotalHealth00 < 1000 && heroTotalHealth00 >= 100) {
+								cout << "0" << heroTotalHealth00;
 							} else {
-								cout << heroHealth00;
+								cout << heroTotalHealth00;
 							}
 
 							cout << " -||\n";
@@ -2362,7 +2442,7 @@ int main() {
 							cout << "||- Health -||- ";
 
 							// Just some calculations
-							hashCount = heroHealth01 / 50;
+							hashCount = heroTotalHealth01 / 50;
 							equalCount = 20 - hashCount;
 
 							// Create bar
@@ -2375,12 +2455,12 @@ int main() {
 
 							cout << " -||- ";
 
-							if(heroHealth01 < 100 && heroHealth01 >= 10) {
-								cout << "00" << heroHealth01;
-							} else if(heroHealth01 < 1000 && heroHealth01 >= 100) {
-								cout << "0" << heroHealth01;
+							if(heroTotalHealth01 < 100 && heroTotalHealth01 >= 10) {
+								cout << "00" << heroTotalHealth01;
+							} else if(heroTotalHealth01 < 1000 && heroTotalHealth01 >= 100) {
+								cout << "0" << heroTotalHealth01;
 							} else {
-								cout << heroHealth01;
+								cout << heroTotalHealth01;
 							}
 
 							cout << " -||\n";
@@ -2464,7 +2544,7 @@ int main() {
 							cout << "||- Health -||- ";
 
 							// Just some calculations
-							hashCount = heroHealth02 / 50;
+							hashCount = heroTotalHealth02 / 50;
 							equalCount = 20 - hashCount;
 
 							// Create bar
@@ -2477,12 +2557,12 @@ int main() {
 
 							cout << " -||- ";
 
-							if(heroHealth02 < 100 && heroHealth02 >= 10) {
-								cout << "00" << heroHealth02;
-							} else if(heroHealth02 < 1000 && heroHealth02 >= 100) {
-								cout << "0" << heroHealth02;
+							if(heroTotalHealth02 < 100 && heroTotalHealth02 >= 10) {
+								cout << "00" << heroTotalHealth02;
+							} else if(heroTotalHealth02 < 1000 && heroTotalHealth02 >= 100) {
+								cout << "0" << heroTotalHealth02;
 							} else {
-								cout << heroHealth02;
+								cout << heroTotalHealth02;
 							}
 
 							cout << " -||\n";
@@ -2566,7 +2646,7 @@ int main() {
 							cout << "||- Health -||- ";
 
 							// Just some calculations
-							hashCount = heroHealth03 / 50;
+							hashCount = heroTotalHealth03 / 50;
 							equalCount = 20 - hashCount;
 
 							// Create bar
@@ -2579,12 +2659,12 @@ int main() {
 
 							cout << " -||- ";
 
-							if(heroHealth03 < 100 && heroHealth03 >= 10) {
-								cout << "00" << heroHealth03;
-							} else if(heroHealth03 < 1000 && heroHealth03 >= 100) {
-								cout << "0" << heroHealth03;
+							if(heroTotalHealth03 < 100 && heroTotalHealth03 >= 10) {
+								cout << "00" << heroTotalHealth03;
+							} else if(heroTotalHealth03 < 1000 && heroTotalHealth03 >= 100) {
+								cout << "0" << heroTotalHealth03;
 							} else {
-								cout << heroHealth03;
+								cout << heroTotalHealth03;
 							}
 
 							cout << " -||\n";
@@ -2668,7 +2748,7 @@ int main() {
 							cout << "||- Health -||- ";
 
 							// Just some calculations
-							hashCount = heroHealth04 / 50;
+							hashCount = heroTotalHealth04 / 50;
 							equalCount = 20 - hashCount;
 
 							// Create bar
@@ -2681,12 +2761,12 @@ int main() {
 
 							cout << " -||- ";
 
-							if(heroHealth04 < 100 && heroHealth04 >= 10) {
-								cout << "00" << heroHealth04;
-							} else if(heroHealth04 < 1000 && heroHealth04 >= 100) {
-								cout << "0" << heroHealth04;
+							if(heroTotalHealth04 < 100 && heroTotalHealth04 >= 10) {
+								cout << "00" << heroTotalHealth04;
+							} else if(heroTotalHealth04 < 1000 && heroTotalHealth04 >= 100) {
+								cout << "0" << heroTotalHealth04;
 							} else {
-								cout << heroHealth04;
+								cout << heroTotalHealth04;
 							}
 
 							cout << " -||\n";
@@ -2771,8 +2851,8 @@ int main() {
 					}
 
 					if(menuSelection == 0) {
-						if(heroHealth00 < 1000) {
-							heroHealth00 += 50;
+						if(heroTotalHealth00 < 1000) {
+							heroTotalHealth00 += 50;
 							currentCredits -= 100;
 							spentCredits += 100;
 						}
@@ -2783,8 +2863,8 @@ int main() {
 							spentCredits += 100;
 						}
 					} else if(menuSelection == 2 && heroActive01) {
-						if(heroHealth01 < 1000) {
-							heroHealth01 += 50;
+						if(heroTotalHealth01 < 1000) {
+							heroTotalHealth01 += 50;
 							currentCredits -= 100;
 							spentCredits += 100;
 						}
@@ -2795,8 +2875,8 @@ int main() {
 							spentCredits += 100;
 						}
 					} else if(menuSelection == 4 && heroActive02) {
-						if(heroHealth02 < 1000) {
-							heroHealth02 += 50;
+						if(heroTotalHealth02 < 1000) {
+							heroTotalHealth02 += 50;
 							currentCredits -= 100;
 							spentCredits += 100;
 						}
@@ -2807,8 +2887,8 @@ int main() {
 							spentCredits += 100;
 						}
 					} else if(menuSelection == 6 && heroActive03) {
-						if(heroHealth03 < 1000) {
-							heroHealth03 += 50;
+						if(heroTotalHealth03 < 1000) {
+							heroTotalHealth03 += 50;
 							currentCredits -= 100;
 							spentCredits += 100;
 						}
@@ -2819,8 +2899,8 @@ int main() {
 							spentCredits += 100;
 						}
 					} else if(menuSelection == 8 && heroActive04) {
-						if(heroHealth04 < 1000) {
-							heroHealth04 += 50;
+						if(heroTotalHealth04 < 1000) {
+							heroTotalHealth04 += 50;
 							currentCredits -= 100;
 							spentCredits += 100;
 						}
@@ -2995,22 +3075,22 @@ int main() {
 
 						if(numHeroes == 1) {
 							heroName01 = menuString;
-							heroHealth01 = 50;
+							heroTotalHealth01 = 50;
 							heroAttack01 = 10;
 							heroActive01 = true;
 						} else if(numHeroes == 2) {
 							heroName02 = menuString;
-							heroHealth02 = 50;
+							heroTotalHealth02 = 50;
 							heroAttack02 = 10;
 							heroActive02 = true;
 						} else if(numHeroes == 3) {
 							heroName03 = menuString;
-							heroHealth03 = 50;
+							heroTotalHealth03 = 50;
 							heroAttack03 = 10;
 							heroActive03 = true;
 						} else if(numHeroes == 4) {
 							heroName04 = menuString;
-							heroHealth04 = 50;
+							heroTotalHealth04 = 50;
 							heroAttack04 = 10;
 							heroActive04 = true;
 						}
