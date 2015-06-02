@@ -158,7 +158,7 @@ int main() {
 
 	int    r1b2Units = 0;
 	bool   r1b2Counted = false;
-	bool   r1b2Active = true;
+	bool   r1b2Active = false;
 	bool   r1b2Defeated = false;
 	string r1b2Name00 = "Monster 1";
 	int    r1b2TotalHealth00 = 50;
@@ -190,7 +190,7 @@ int main() {
 
 	int    r1b3Units = 0;
 	bool   r1b3Counted = false;
-	bool   r1b3Active = true;
+	bool   r1b3Active = false;
 	bool   r1b3Defeated = false;
 	string r1b3Name00 = "Monster 1";
 	int    r1b3TotalHealth00 = 50;
@@ -1903,13 +1903,14 @@ int main() {
 									monsterTotalHealth += r1b1TotalHealth04;
 									monsterCurrentHealth = monsterTotalHealth;
 
+									// Used for choosing random units from either side
+
+									uniform_int_distribution<int> theHero(1, numHeroes);
+									uniform_int_distribution<int> theMonster(1, r1b1Units);
+
 									// Loop battle until we have a winner
 
 									while(playing) {
-										// Get the random generation going
-
-										uniform_int_distribution<int> theHero(1, numHeroes);
-										uniform_int_distribution<int> theMonster(1, r1b1Units);
 										uniform_int_distribution<int> totalUnits(1, (numHeroes + r1b1Units));
 
 										// Store names of two units that will be attacking
@@ -2002,16 +2003,24 @@ int main() {
 											// Heroes attacking
 
 											if(monsterUnit == 1) {
+												if(heroAttack >= r1b1CurrentHealth00) {
+													heroAttack = r1b1CurrentHealth00;
+												}
+
 												r1b1CurrentHealth00  -= heroAttack;
 												monsterCurrentHealth -= heroAttack;
 
 												if(r1b1CurrentHealth00 <= 0) {
 													r1b1TotalHealth00 = 0;
-													r1b1Attack01      = 0;
+													r1b1Attack00      = 0;
 													r1b1Status00      = false;
 													r1b1Units--;
 												}
 											} else if(monsterUnit == 2) {
+												if(heroAttack >= r1b1CurrentHealth01) {
+													heroAttack = r1b1CurrentHealth01;
+												}
+
 												r1b1CurrentHealth01  -= heroAttack;
 												monsterCurrentHealth -= heroAttack;
 
@@ -2022,6 +2031,10 @@ int main() {
 													r1b1Units--;
 												}
 											} else if(monsterUnit == 3) {
+												if(heroAttack >= r1b1CurrentHealth02) {
+													heroAttack = r1b1CurrentHealth02;
+												}
+
 												r1b1CurrentHealth02  -= heroAttack;
 												monsterCurrentHealth -= heroAttack;
 
@@ -2032,6 +2045,10 @@ int main() {
 													r1b1Units--;
 												}
 											} else if(monsterUnit == 4) {
+												if(heroAttack >= r1b1CurrentHealth03) {
+													heroAttack = r1b1CurrentHealth03;
+												}
+
 												r1b1CurrentHealth03  -= heroAttack;
 												monsterCurrentHealth -= heroAttack;
 
@@ -2042,6 +2059,10 @@ int main() {
 													r1b1Units--;
 												}
 											} else if(monsterUnit == 5) {
+												if(heroAttack >= r1b1CurrentHealth04) {
+													heroAttack = r1b1CurrentHealth04;
+												}
+
 												r1b1CurrentHealth04  -= heroAttack;
 												monsterCurrentHealth -= heroAttack;
 
@@ -2056,14 +2077,22 @@ int main() {
 											// Monsters attacking
 
 											if(heroUnit == 1) {
+												if(monsterAttack >= heroCurrentHealth00) {
+													monsterAttack = heroCurrentHealth00;
+												}
+
 												heroCurrentHealth00 -= monsterAttack;
 												heroCurrentHealth   -= monsterAttack;
 
 												if(heroCurrentHealth00 <= 0) {
 													heroStatus00 = false;
-													numHeroes--;
+													heroUnit--;
 												}
 											} else if(heroUnit == 2) {
+												if(monsterAttack >= heroCurrentHealth01) {
+													monsterAttack = heroCurrentHealth01;
+												}
+
 												heroCurrentHealth01 -= monsterAttack;
 												heroCurrentHealth   -= monsterAttack;
 
@@ -2074,7 +2103,11 @@ int main() {
 													heroUnit--;
 												}
 											} else if(heroUnit == 3) {
-												heroCurrentHealth01 -= monsterAttack;
+												if(monsterAttack >= heroCurrentHealth02) {
+													monsterAttack = heroCurrentHealth02;
+												}
+
+												heroCurrentHealth02 -= monsterAttack;
 												heroCurrentHealth   -= monsterAttack;
 
 												if(heroCurrentHealth02 <= 0) {
@@ -2084,7 +2117,11 @@ int main() {
 													heroUnit--;
 												}
 											} else if(heroUnit == 4) {
-												heroCurrentHealth01 -= monsterAttack;
+												if(monsterAttack >= heroCurrentHealth03) {
+													monsterAttack = heroCurrentHealth03;
+												}
+
+												heroCurrentHealth03 -= monsterAttack;
 												heroCurrentHealth   -= monsterAttack;
 
 												if(heroCurrentHealth03 <= 0) {
@@ -2094,6 +2131,10 @@ int main() {
 													heroUnit--;
 												}
 											} else if(heroUnit == 5) {
+												if(monsterAttack >= heroCurrentHealth04) {
+													monsterAttack = heroCurrentHealth04;
+												}
+
 												heroCurrentHealth04 -= monsterAttack;
 												heroCurrentHealth   -= monsterAttack;
 
@@ -2192,7 +2233,7 @@ int main() {
 
 										cout << spacer;
 
-										cout << "||---------- Heroes -----------------||\n";
+										cout << "||-------------- Heroes -------------||\n";
 										cout << "||-----------------------------------||\n";
 
 										if(heroActive00) { 
@@ -2720,6 +2761,10 @@ int main() {
 											}
 
 											cout << "||\n";
+
+											cout << "||-----------------------------------||\n";
+
+											cout << spacer;
 										}
 
 										cout << spacer;
@@ -2765,6 +2810,13 @@ int main() {
 										win = false;
 										conquestDefeats++;
 
+										uniform_int_distribution<int> killed(5, (r1b1Units * 10));
+
+										population = killed(randomGenerator);
+
+										populationAlive -= population;
+										populationDead += population;
+
 										currency    = (r1b1CurrentHealth00 + r1b1CurrentHealth01 + r1b1CurrentHealth02 + r1b1CurrentHealth03 + r1b1CurrentHealth04) * r1b1Units;
 
 										lostCredits += currency;
@@ -2783,18 +2835,11 @@ int main() {
 
 										conquestWins++;
 
-										currency       = (heroCurrentHealth00 + heroCurrentHealth00 + heroCurrentHealth00 + heroCurrentHealth00 + heroCurrentHealth00) * numHeroes;
+										currency        = (heroCurrentHealth00 + heroCurrentHealth00 + heroCurrentHealth00 + heroCurrentHealth00 + heroCurrentHealth00) * numHeroes;
 
-										wonCredits     += currency;
-										currentCredits += wonCredits;
+										wonCredits      += currency;
+										currentCredits  += wonCredits;
 									}
-
-									uniform_int_distribution<int> killed(5, (r1b1Units * 10));
-
-									population = killed(randomGenerator);
-
-									populationAlive -= population;
-									populationDead  += population;
 
 									if(!heroStatus00 && heroActive00) {
 										heroCurrentHealth00 = heroTotalHealth00;
@@ -2942,6 +2987,29 @@ int main() {
 
 									cout << spacer;
 
+									cout << "|| [1] Continue\n";
+
+									cout << spacer;
+
+									cout << "|| Please enter a number: ";
+									cin >> menuSelection;
+
+									if(menuSelection != 1) {
+										menuError = true;
+									}
+
+									while(menuError) {
+										cout << spacer;
+										cout << "|| " << error << "Number must be 1.\n";
+										cout << spacer;
+										cout << "|| Please enter a number: ";
+										cin >> menuSelection;
+
+										if(menuSelection == 1) {
+											menuError = false;
+										}
+									}
+
 								}
 							} else if(menuSelection == 2) {
 								// Base 2
@@ -3019,7 +3087,7 @@ int main() {
 
 					while(menuError) {
 						cout << spacer;
-						cout << "|| " << error << "Number must be between 1.\n";
+						cout << "|| " << error << "Number must be 1.\n";
 						cout << spacer;
 						cout << "|| Please enter a number: ";
 						cin >> menuSelection;
@@ -3788,29 +3856,33 @@ int main() {
 						}
 
 						if(!heroActive01) {
-							heroName01 = menuString;
-							heroTotalHealth01 = 50;
+							heroName01          = menuString;
+							heroTotalHealth01   = 50;
 							heroCurrentHealth01 = heroTotalHealth01;
-							heroAttack01 = 10;
-							heroActive01 = true;
+							heroAttack01        = 10;
+							heroStatus01        = true;
+							heroActive01        = true;
 						} else if(!heroActive02) {
-							heroName02 = menuString;
-							heroTotalHealth02 = 50;
+							heroName02          = menuString;
+							heroTotalHealth02   = 50;
 							heroCurrentHealth02 = heroTotalHealth02;
-							heroAttack02 = 10;
-							heroActive02 = true;
+							heroAttack02        = 10;
+							heroStatus02        = true;
+							heroActive02        = true;
 						} else if(!heroActive03) {
-							heroName03 = menuString;
-							heroTotalHealth03 = 50;
+							heroName03          = menuString;
+							heroTotalHealth03   = 50;
 							heroCurrentHealth03 = heroTotalHealth03;
-							heroAttack03 = 10;
-							heroActive03 = true;
+							heroAttack03        = 10;
+							heroStatus03        = true;
+							heroActive03        = true;
 						} else if(!heroActive04) {
-							heroName04 = menuString;
-							heroTotalHealth04 = 50;
+							heroName04          = menuString;
+							heroTotalHealth04   = 50;
 							heroCurrentHealth04 = heroTotalHealth04;
-							heroAttack04 = 10;
-							heroActive04 = true;
+							heroAttack04        = 10;
+							heroStatus04        = true;
+							heroActive04        = true;
 						}
 
 						recruited = true;
