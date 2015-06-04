@@ -133,26 +133,26 @@ int main() {
 	int    r1b1TotalHealth01   = 50;
 	int    r1b1CurrentHealth01 = r1b1TotalHealth01;
 	int    r1b1Attack01        = 10;
-	bool   r1b1Status01        = true;
-	bool   r1b1Active01        = true;
+	bool   r1b1Status01        = false;
+	bool   r1b1Active01        = false;
 	string r1b1Name02          = "Monster 3";
 	int    r1b1TotalHealth02   = 50;
 	int    r1b1CurrentHealth02 = r1b1TotalHealth02;
 	int    r1b1Attack02        = 10;
-	bool   r1b1Status02        = true;
-	bool   r1b1Active02        = true;
+	bool   r1b1Status02        = false;
+	bool   r1b1Active02        = false;
 	string r1b1Name03          = "Monster 4";
 	int    r1b1TotalHealth03   = 50;
 	int    r1b1CurrentHealth03 = r1b1TotalHealth03;
 	int    r1b1Attack03        = 10;
-	bool   r1b1Status03        = true;
-	bool   r1b1Active03        = true;
+	bool   r1b1Status03        = false;
+	bool   r1b1Active03        = false;
 	string r1b1Name04          = "Monster 5";
 	int    r1b1TotalHealth04   = 50;
 	int    r1b1CurrentHealth04 = r1b1TotalHealth04;
 	int    r1b1Attack04        = 10;
-	bool   r1b1Status04        = true;
-	bool   r1b1Active04        = true;
+	bool   r1b1Status04        = false;
+	bool   r1b1Active04        = false;
 
 	// Base 2
 
@@ -176,20 +176,20 @@ int main() {
 	int    r1b2TotalHealth02   = 50;
 	int    r1b2CurrentHealth02 = r1b1TotalHealth02;
 	int    r1b2Attack02        = 10;
-	bool   r1b2Status02        = true;
-	bool   r1b2Active02        = true;
+	bool   r1b2Status02        = false;
+	bool   r1b2Active02        = false;
 	string r1b2Name03          = "Monster 4";
 	int    r1b2TotalHealth03   = 50;
 	int    r1b2CurrentHealth03 = r1b1TotalHealth03;
 	int    r1b2Attack03        = 10;
-	bool   r1b2Status03        = true;
-	bool   r1b2Active03        = true;
+	bool   r1b2Status03        = false;
+	bool   r1b2Active03        = false;
 	string r1b2Name04          = "Monster 5";
 	int    r1b2TotalHealth04   = 50;
 	int    r1b2CurrentHealth04 = r1b1TotalHealth04;
 	int    r1b2Attack04        = 10;
-	bool   r1b2Status04        = true;
-	bool   r1b2Active04        = true;
+	bool   r1b2Status04        = false;
+	bool   r1b2Active04        = false;
 
 	// Base 3
 
@@ -219,14 +219,14 @@ int main() {
 	int    r1b3TotalHealth03   = 50;
 	int    r1b3CurrentHealth03 = r1b1TotalHealth03;
 	int    r1b3Attack03        = 10;
-	bool   r1b3Status03        = true;
-	bool   r1b3Active03        = true;
+	bool   r1b3Status03        = false;
+	bool   r1b3Active03        = false;
 	string r1b3Name04          = "Monster 5";
 	int    r1b3TotalHealth04   = 50;
 	int    r1b3CurrentHealth04 = r1b1TotalHealth04;
 	int    r1b3Attack04        = 10;
-	bool   r1b3Status04        = true;
-	bool   r1b3Active04        = true;
+	bool   r1b3Status04        = false;
+	bool   r1b3Active04        = false;
 
 	// Base 4
 
@@ -235,19 +235,19 @@ int main() {
 	bool   r1b4Active          = true;
 	bool   r1b4Defeated        = false;
 	string r1b4Name00          = "Monster 1";
-	int    r1b4TotalHealth00   = 50;
+	int    r1b4TotalHealth00   = 100;
 	int    r1b4CurrentHealth00 = r1b1TotalHealth00;
 	int    r1b4Attack00        = 10;
 	bool   r1b4Status00        = true;
 	bool   r1b4Active00        = true;
 	string r1b4Name01          = "Monster 2";
-	int    r1b4TotalHealth01   = 50;
+	int    r1b4TotalHealth01   = 150;
 	int    r1b4CurrentHealth01 = r1b1TotalHealth01;
-	int    r1b4Attack01        = 10;
+	int    r1b4Attack01        = 20;
 	bool   r1b4Status01        = true;
 	bool   r1b4Active01        = true;
 	string r1b4Name02          = "Monster 3";
-	int    r1b4TotalHealth02   = 50;
+	int    r1b4TotalHealth02   = 100;
 	int    r1b4CurrentHealth02 = r1b1TotalHealth02;
 	int    r1b4Attack02        = 10;
 	bool   r1b4Status02        = true;
@@ -256,14 +256,14 @@ int main() {
 	int    r1b4TotalHealth03   = 50;
 	int    r1b4CurrentHealth03 = r1b1TotalHealth03;
 	int    r1b4Attack03        = 10;
-	bool   r1b4Status03        = true;
-	bool   r1b4Active03        = true;
+	bool   r1b4Status03        = false;
+	bool   r1b4Active03        = false;
 	string r1b4Name04          = "Monster 5";
 	int    r1b4TotalHealth04   = 50;
 	int    r1b4CurrentHealth04 = r1b1TotalHealth04;
 	int    r1b4Attack04        = 10;
-	bool   r1b4Status04        = true;
-	bool   r1b4Active04        = true;
+	bool   r1b4Status04        = false;
+	bool   r1b4Active04        = false;
 
 	// Base 5
 
@@ -272,35 +272,35 @@ int main() {
 	bool   r1b5Active          = true;
 	bool   r1b5Defeated        = false;
 	string r1b5Name00          = "Monster 1";
-	int    r1b5TotalHealth00   = 50;
+	int    r1b5TotalHealth00   = 200;
 	int    r1b5CurrentHealth00 = r1b1TotalHealth00;
-	int    r1b5Attack00        = 10;
+	int    r1b5Attack00        = 40;
 	bool   r1b5Status00        = true;
 	bool   r1b5Active00        = true;
 	string r1b5Name01          = "Monster 2";
 	int    r1b5TotalHealth01   = 50;
 	int    r1b5CurrentHealth01 = r1b1TotalHealth01;
 	int    r1b5Attack01        = 10;
-	bool   r1b5Status01        = true;
-	bool   r1b5Active01        = true;
+	bool   r1b5Status01        = false;
+	bool   r1b5Active01        = false;
 	string r1b5Name02          = "Monster 3";
 	int    r1b5TotalHealth02   = 50;
 	int    r1b5CurrentHealth02 = r1b1TotalHealth02;
 	int    r1b5Attack02        = 10;
-	bool   r1b5Status02        = true;
-	bool   r1b5Active02        = true;
+	bool   r1b5Status02        = false;
+	bool   r1b5Active02        = false;
 	string r1b5Name03          = "Monster 4";
 	int    r1b5TotalHealth03   = 50;
 	int    r1b5CurrentHealth03 = r1b1TotalHealth03;
 	int    r1b5Attack03        = 10;
-	bool   r1b5Status03        = true;
-	bool   r1b5Active03        = true;
+	bool   r1b5Status03        = false;
+	bool   r1b5Active03        = false;
 	string r1b5Name04          = "Monster 5";
 	int    r1b5TotalHealth04   = 50;
 	int    r1b5CurrentHealth04 = r1b1TotalHealth04;
 	int    r1b5Attack04        = 10;
-	bool   r1b5Status04        = true;
-	bool   r1b5Active04        = true;
+	bool   r1b5Status04        = false;
+	bool   r1b5Active04        = false;
 
 	// Base 6
 
@@ -346,19 +346,19 @@ int main() {
 	bool   r1b7Active          = true;
 	bool   r1b7Defeated        = false;
 	string r1b7Name00          = "Monster 1";
-	int    r1b7TotalHealth00   = 50;
+	int    r1b7TotalHealth00   = 200;
 	int    r1b7CurrentHealth00 = r1b1TotalHealth00;
 	int    r1b7Attack00        = 10;
 	bool   r1b7Status00        = true;
 	bool   r1b7Active00        = true;
 	string r1b7Name01          = "Monster 2";
-	int    r1b7TotalHealth01   = 50;
+	int    r1b7TotalHealth01   = 200;
 	int    r1b7CurrentHealth01 = r1b1TotalHealth01;
 	int    r1b7Attack01        = 10;
 	bool   r1b7Status01        = true;
 	bool   r1b7Active01        = true;
 	string r1b7Name02          = "Monster 3";
-	int    r1b7TotalHealth02   = 50;
+	int    r1b7TotalHealth02   = 200;
 	int    r1b7CurrentHealth02 = r1b1TotalHealth02;
 	int    r1b7Attack02        = 10;
 	bool   r1b7Status02        = true;
@@ -367,14 +367,14 @@ int main() {
 	int    r1b7TotalHealth03   = 50;
 	int    r1b7CurrentHealth03 = r1b1TotalHealth03;
 	int    r1b7Attack03        = 10;
-	bool   r1b7Status03        = true;
-	bool   r1b7Active03        = true;
+	bool   r1b7Status03        = false;
+	bool   r1b7Active03        = false;
 	string r1b7Name04          = "Monster 5";
 	int    r1b7TotalHealth04   = 50;
 	int    r1b7CurrentHealth04 = r1b1TotalHealth04;
 	int    r1b7Attack04        = 10;
-	bool   r1b7Status04        = true;
-	bool   r1b7Active04        = true;
+	bool   r1b7Status04        = false;
+	bool   r1b7Active04        = false;
 
 	// Base 8
 
@@ -385,31 +385,31 @@ int main() {
 	string r1b8Name00          = "Monster 1";
 	int    r1b8TotalHealth00   = 50;
 	int    r1b8CurrentHealth00 = r1b1TotalHealth00;
-	int    r1b8Attack00        = 10;
+	int    r1b8Attack00        = 20;
 	bool   r1b8Status00        = true;
 	bool   r1b8Active00        = true;
 	string r1b8Name01          = "Monster 2";
 	int    r1b8TotalHealth01   = 50;
 	int    r1b8CurrentHealth01 = r1b1TotalHealth01;
-	int    r1b8Attack01        = 10;
+	int    r1b8Attack01        = 20;
 	bool   r1b8Status01        = true;
 	bool   r1b8Active01        = true;
 	string r1b8Name02          = "Monster 3";
 	int    r1b8TotalHealth02   = 50;
 	int    r1b8CurrentHealth02 = r1b1TotalHealth02;
-	int    r1b8Attack02        = 10;
+	int    r1b8Attack02        = 20;
 	bool   r1b8Status02        = true;
 	bool   r1b8Active02        = true;
 	string r1b8Name03          = "Monster 4";
 	int    r1b8TotalHealth03   = 50;
 	int    r1b8CurrentHealth03 = r1b1TotalHealth03;
-	int    r1b8Attack03        = 10;
+	int    r1b8Attack03        = 20;
 	bool   r1b8Status03        = true;
 	bool   r1b8Active03        = true;
 	string r1b8Name04          = "Monster 5";
 	int    r1b8TotalHealth04   = 50;
 	int    r1b8CurrentHealth04 = r1b1TotalHealth04;
-	int    r1b8Attack04        = 10;
+	int    r1b8Attack04        = 20;
 	bool   r1b8Status04        = true;
 	bool   r1b8Active04        = true;
 
@@ -419,34 +419,34 @@ int main() {
 	bool   r1b9Counted         = false;
 	bool   r1b9Active          = true;
 	bool   r1b9Defeated        = false;
-	string r1b9Name00          = "Monster 1";
-	int    r1b9TotalHealth00   = 50;
+	string r1b9Name00          = "Boss 1";
+	int    r1b9TotalHealth00   = 200;
 	int    r1b9CurrentHealth00 = r1b1TotalHealth00;
-	int    r1b9Attack00        = 10;
+	int    r1b9Attack00        = 40;
 	bool   r1b9Status00        = true;
 	bool   r1b9Active00        = true;
 	string r1b9Name01          = "Monster 2";
-	int    r1b9TotalHealth01   = 50;
+	int    r1b9TotalHealth01   = 100;
 	int    r1b9CurrentHealth01 = r1b1TotalHealth01;
-	int    r1b9Attack01        = 10;
+	int    r1b9Attack01        = 20;
 	bool   r1b9Status01        = true;
 	bool   r1b9Active01        = true;
 	string r1b9Name02          = "Monster 3";
-	int    r1b9TotalHealth02   = 50;
+	int    r1b9TotalHealth02   = 100;
 	int    r1b9CurrentHealth02 = r1b1TotalHealth02;
-	int    r1b9Attack02        = 10;
+	int    r1b9Attack02        = 20;
 	bool   r1b9Status02        = true;
 	bool   r1b9Active02        = true;
 	string r1b9Name03          = "Monster 4";
-	int    r1b9TotalHealth03   = 50;
+	int    r1b9TotalHealth03   = 150;
 	int    r1b9CurrentHealth03 = r1b1TotalHealth03;
-	int    r1b9Attack03        = 10;
+	int    r1b9Attack03        = 30;
 	bool   r1b9Status03        = true;
 	bool   r1b9Active03        = true;
 	string r1b9Name04          = "Monster 5";
-	int    r1b9TotalHealth04   = 50;
+	int    r1b9TotalHealth04   = 150;
 	int    r1b9CurrentHealth04 = r1b1TotalHealth04;
-	int    r1b9Attack04        = 10;
+	int    r1b9Attack04        = 30;
 	bool   r1b9Status04        = true;
 	bool   r1b9Active04        = true;
 
