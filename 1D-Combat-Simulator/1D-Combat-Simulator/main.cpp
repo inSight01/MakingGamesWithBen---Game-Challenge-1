@@ -1993,11 +1993,45 @@ int main() {
 
 					cout << spacer;
 
-					cout << "|| [1] Region 1\n";
-					cout << "|| [2] Region 2\n";
-					cout << "|| [3] Region 3\n";
-					cout << "|| [4] Region 4\n";
-					cout << "|| [5] Region 5\n";
+					cout << "|| [1] Region 1 - [";
+					if(r1Active && !r1Locked) {
+						cout << "Active";
+					} else {
+						cout << "Locked";
+					}
+					cout << "]\n";
+
+					cout << "|| [2] Region 2 - [";
+					if(r1Active && !r1Locked) {
+						cout << "Active";
+					} else {
+						cout << "Locked";
+					}
+					cout << "]\n";
+
+					cout << "|| [3] Region 3 - [";
+					if(r1Active && !r1Locked) {
+						cout << "Active";
+					} else {
+						cout << "Locked";
+					}
+					cout << "]\n";
+
+					cout << "|| [4] Region 4 - [";
+					if(r1Active && !r1Locked) {
+						cout << "Active";
+					} else {
+						cout << "Locked";
+					}
+					cout << "]\n";
+
+					cout << "|| [5] Region 5 - [";
+					if(r1Active && !r1Locked) {
+						cout << "Active";
+					} else {
+						cout << "Locked";
+					}
+					cout << "]\n";
 
 					cout << spacer;
 
@@ -22758,15 +22792,18 @@ int main() {
 							}
 						}
 						playing = true;
-					} else if(menuSelection == 2) {
+					} else if(menuSelection == 2 && r2Active) {
 						// Region 2
 
-					} else if(menuSelection == 3) {
+					} else if(menuSelection == 3 && r3Active) {
 						// Region 3
-					} else if(menuSelection == 4) {
+
+					} else if(menuSelection == 4 && r4Active) {
 						// Region 4
-					} else if(menuSelection == 5) {
+
+					} else if(menuSelection == 5 && r5Active) {
 						// Region 5
+
 					} else if(menuSelection == 6) {
 						playing = false;
 					}
